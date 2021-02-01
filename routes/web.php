@@ -1326,12 +1326,12 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/register', function() {
-    return redirect('/login');    
-});
-Route::get('/password/reset', function() {
-    return redirect('/login');    
-});
+// Route::get('/register', function() {
+//     return redirect('/login');    
+// });
+// Route::get('/password/reset', function() {
+//     return redirect('/login');    
+// });
 
 Route::get('/', function() {
     return redirect('/sales');    
