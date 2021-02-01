@@ -9,13 +9,6 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <?php
-
-        $page_name = 'analytics';
-
-
-    ?>
-
     <title>{{ setTitle($page_name) }}</title>
     <link rel="icon" type="image/x-icon" href="{{asset('storage/img/favicon.ico')}}"/>
     <!-- Fonts -->
@@ -42,22 +35,22 @@
 
         
 
-        @if(Auth::user()->role =='user')
+        @auth()
 
-            @include('inc.user_sidebar')
+            @if(Auth::user()->role == 'user')
+                @include('inc.user_sidebar')
+            @elseifAuth::user()->role == 'admin'()
+                 @include('inc.admin_sidebar')
+            @endif
 
-        @elseif(Auth::user()->role =='admin')
-
-             @include('inc.admin_sidebar')
+        
 
         @else
 
-            @include('inc.sidebar')
+                @include('inc.sidebar')
 
 
         @endif
-
-        
 
         <!--  BEGIN CONTENT PART  -->
         <div id="content" class="main-content">

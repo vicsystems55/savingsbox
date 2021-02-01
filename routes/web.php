@@ -21,7 +21,14 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['auth','user'], 'prefix' => 'user'], function(){
     
 
-    Route::get('/', 'UserPageController@dashboard')->name('member');
+    Route::get('/', 'UserPageController@dashboard')->name('user');
+    Route::get('/notifications', 'UserPageController@notifications')->name('user.notifications');
+    Route::get('/reliance_packages', 'UserPageController@reliance_packages')->name('user.reliance_packages');
+    Route::get('/settings', 'UserPageController@settings')->name('user.settings');
+    Route::get('/my_profile', 'UserPageController@my_profile')->name('user.my_profile');
+    Route::get('/support', 'UserPageController@support')->name('user.support');
+    Route::get('/', 'UserPageController@dashboard')->name('user');
+    Route::get('/', 'UserPageController@dashboard')->name('user');
 
 });
 
@@ -29,11 +36,21 @@ Route::group(['middleware' => ['auth','user'], 'prefix' => 'user'], function(){
 Route::group(['middleware' => ['auth','admin'], 'prefix' => 'admin'], function(){
 
 
-    Route::get('/', 'UserPageController@dashboard')->name('admin');
+    Route::get('/members', 'AdminPageController@members')->name('admin.members');
+    Route::get('/support', 'AdminPageController@support')->name('admin.support');
+    Route::get('/notifications', 'AdminPageController@notifications')->name('admin.notifications');
+    Route::get('/single_notification', 'AdminPageController@single_notification')->name('admin.single_notification');
+    Route::get('/accounts', 'AdminPageController@accounts')->name('admin.accounts');
+    Route::get('/reports', 'AdminPageController@reports')->name('admin.reports');
+    Route::get('/audit_trail', 'AdminPageController@audit_trail')->name('admin.audit_trail');
+    Route::get('/reliance_packages', 'AdminPageController@reliance_packages')->name('admin.reliance_packages');
+    Route::get('/single_package', 'AdminPageController@single_package')->name('admin.single_package');
+    Route::get('/payouts', 'AdminPageController@payouts')->name('admin.payouts');
+    Route::get('/single_payout', 'AdminPageController@single_payout')->name('admin.single_payout');
 
 });
 
-Route::group(['middleware' => 'auth'] , function() {
+Route::group([] , function() {
 
     // $this->middleware
 
@@ -1326,9 +1343,13 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 
-// Route::get('/register', function() {
-//     return redirect('/login');    
-// });
+Route::get('/register', function() {
+    return redirect('/authentication/register_boxed');    
+});
+
+Route::get('/login', function() {
+    return redirect('/authentication/login_boxed');    
+});
 // Route::get('/password/reset', function() {
 //     return redirect('/login');    
 // });

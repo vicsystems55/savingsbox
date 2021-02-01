@@ -25,6 +25,108 @@ class UserPageController extends Controller
         return view('users.dashboard')->with($data);
     }
 
+
+    public function notifications()
+    {
+        //
+
+        $data = [
+            'category_name' => 'dashboard',
+            'page_name' => 'analytics',
+            'has_scrollspy' => 0,
+            'scrollspy_offset' => '',
+        ];
+
+        return view('users.notifications')->with($data);
+    }
+
+
+    public function reliance_packages()
+    {
+        //
+
+        $data = [
+            'category_name' => 'dashboard',
+            'page_name' => 'analytics',
+            'has_scrollspy' => 0,
+            'scrollspy_offset' => '',
+        ];
+
+        return view('users.reliance_packages')->with($data);
+    }
+
+    public function single_package()
+    {
+        //
+
+        $data = [
+            'category_name' => 'dashboard',
+            'page_name' => 'analytics',
+            'has_scrollspy' => 0,
+            'scrollspy_offset' => '',
+        ];
+
+        return view('users.single_package')->with($data);
+    }
+
+    public function settings()
+    {
+        //
+
+        $data = [
+            'category_name' => 'dashboard',
+            'page_name' => 'analytics',
+            'has_scrollspy' => 0,
+            'scrollspy_offset' => '',
+        ];
+
+        return view('users.settings')->with($data);
+    }
+
+    public function my_profile()
+    {
+        //
+
+        $data = [
+            'category_name' => 'dashboard',
+            'page_name' => 'analytics',
+            'has_scrollspy' => 0,
+            'scrollspy_offset' => '',
+        ];
+
+        return view('users.my_profile')->with($data);
+    }
+
+
+    public function support()
+    {
+        //
+
+        $data = [
+            'category_name' => 'dashboard',
+            'page_name' => 'analytics',
+            'has_scrollspy' => 0,
+            'scrollspy_offset' => '',
+        ];
+
+        return view('users.support')->with($data);
+    }
+
+
+    public function single_support()
+    {
+        //
+
+        $data = [
+            'category_name' => 'dashboard',
+            'page_name' => 'analytics',
+            'has_scrollspy' => 0,
+            'scrollspy_offset' => '',
+        ];
+
+        return view('users.single_support')->with($data);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
