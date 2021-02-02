@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
+Route::get('/choose', 'ChooseRoleController@index');
+
+
 Route::group(['middleware' => ['auth','user'], 'prefix' => 'user'], function(){
     
 
@@ -173,7 +176,7 @@ Route::group([] , function() {
     });
 
     // Authentication
-    Route::prefix('authentication')->group(function () {
+    Route::prefix('auth')->group(function () {
         Route::get('/lockscreen_boxed', function() {
             // $category_name = 'auth';
             $data = [
@@ -196,7 +199,7 @@ Route::group([] , function() {
             // $pageName = 'auth_default';
             return view('pages.authentication.auth_lockscreen')->with($data);
         });
-        Route::get('/login_boxed', function() {
+        Route::get('/login_', function() {
             // $category_name = 'auth';
             $data = [
                 'category_name' => 'auth',
@@ -240,7 +243,7 @@ Route::group([] , function() {
             // $pageName = 'auth_default';
             return view('pages.authentication.auth_pass_recovery')->with($data);
         });
-        Route::get('/register_boxed', function() {
+        Route::get('/register_', function() {
             // $category_name = 'auth';
             $data = [
                 'category_name' => 'auth',
@@ -1343,16 +1346,6 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/register', function() {
-    return redirect('/authentication/register_boxed');    
-});
-
-Route::get('/login', function() {
-    return redirect('/authentication/login_boxed');    
-});
-// Route::get('/password/reset', function() {
-//     return redirect('/login');    
-// });
 
 Route::get('/', function() {
     return redirect('/sales');    

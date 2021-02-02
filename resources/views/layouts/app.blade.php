@@ -1,3 +1,14 @@
+<?php
+
+     $data = [
+        'category_name' => 'auth',
+        'page_name' => 'auth_default',
+        'has_scrollspy' => 0,
+        'scrollspy_offset' => '',
+    ];
+
+?>
+
 @include('inc.function')
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -9,7 +20,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ setTitle($page_name) }}</title>
+    <title>SavingsBox</title>
     <link rel="icon" type="image/x-icon" href="{{asset('storage/img/favicon.ico')}}"/>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

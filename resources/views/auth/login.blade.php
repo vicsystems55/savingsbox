@@ -31,7 +31,7 @@
                 <div class="form-container">
                     <div class="form-content">
 
-                        <h1 class="">Sign In</h1>
+                        <h1 class="">Sign In.</h1>
                         <p class="">Log in to your account to continue.</p>
                         
                         <form method="POST" action="{{ route('login') }}" class="text-left">
