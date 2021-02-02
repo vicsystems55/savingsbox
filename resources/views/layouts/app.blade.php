@@ -1,14 +1,3 @@
-<?php
-
-     $data = [
-        'category_name' => 'auth',
-        'page_name' => 'auth_default',
-        'has_scrollspy' => 0,
-        'scrollspy_offset' => '',
-    ];
-
-?>
-
 @include('inc.function')
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -20,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>SavingsBox</title>
+    <title>{{ setTitle($page_name) }}</title>
     <link rel="icon" type="image/x-icon" href="{{asset('storage/img/favicon.ico')}}"/>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -44,24 +33,7 @@
         <div class="overlay"></div>
         <div class="search-overlay"></div>
 
-        
-
-        @auth()
-
-            @if(Auth::user()->role == 'user')
-                @include('inc.user_sidebar')
-            @elseifAuth::user()->role == 'admin'()
-                 @include('inc.admin_sidebar')
-            @endif
-
-        
-
-        @else
-
-                @include('inc.sidebar')
-
-
-        @endif
+        @include('inc.user_sidebar')
 
         <!--  BEGIN CONTENT PART  -->
         <div id="content" class="main-content">
