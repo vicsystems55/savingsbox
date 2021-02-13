@@ -77,8 +77,8 @@
                                       <span>OR</span>
                                 </div> -->
 
-                                <div class="social">
-                                    <a href="javascript:void(0);" class=" social-fb">
+                                <div class="social mt-5">
+                                    <a href="{{route('register')}}" class=" social-fb">
                                         <span class="brand-name">Create an Account</span>
                                     </a>
                                    <a href="javascript:void(0);" class=" social-github">

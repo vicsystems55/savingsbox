@@ -31,8 +31,8 @@
                 <div class="form-container">
                     <div class="form-content">
 
-                        <h1 class="">Register</h1>
-                        <p class="signup-link register">Already have an account? <a href="/authentication/login_boxed">Log in</a></p>
+                        <h1 class="">Create an account.</h1>
+                        <p class="signup-link register">Already have an account? <a href="{{route('login')}}">Log in</a></p>
                         <form method="post" action="{{route('register')}}" class="text-left">
 
                         @csrf
@@ -48,9 +48,7 @@
                                         </span>
                                       @enderror
 
-                                      <span class="" role="alert">
-                                            <strong>write</strong>
-                                        </span>
+                                    
                                 </div>
 
                                 <div id="email-field" class="field-wrapper input">

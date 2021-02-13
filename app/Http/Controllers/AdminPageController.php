@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
+
 class AdminPageController extends Controller
 {
     /**
@@ -54,9 +56,61 @@ class AdminPageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    
+    public function members()
     {
         //
+
+        $members = User::get();
+
+         // $category_name = '';
+         $data = [
+            'category_name' => 'members',
+            'page_name' => 'multi-column_ordering',
+            'has_scrollspy' => 0,
+            'scrollspy_offset' => '',
+
+        ];
+        // $pageName = 'multi-column_ordering';
+        return view('admin.members',[
+            'members' => $members
+        ])->with($data);
+    }
+
+    public function reliance_packages()
+    {
+        # code...
+
+        $data = [
+            'category_name' => 'reliance_packages',
+            'page_name' => 'reliance_packages',
+            'has_scrollspy' => 0,
+            'scrollspy_offset' => '',
+        ];
+
+        return view('admin.reliance_packages')->with($data);
+    }
+
+    public function single_member($id)
+    {
+        # code...
+
+        //
+
+        $single_member = User::where('id', $id)->first();
+
+         // $category_name = '';
+         $data = [
+            'category_name' => 'single_member',
+            'page_name' => 'account_settings',
+            'has_scrollspy' => 0,
+            'scrollspy_offset' => '',
+
+        ];
+        // $pageName = 'account_settings';
+        return view('admin.single_member',[
+            'single_member' => $single_member
+        ])->with($data);
     }
 
     /**

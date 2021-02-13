@@ -33,7 +33,27 @@
         <div class="overlay"></div>
         <div class="search-overlay"></div>
 
-        @include('inc.user_0o sidebar')
+        @auth()
+
+            @if(Auth::user()->role == 'admin')
+
+                @include('inc.admin_sidebar')
+
+            @elseif(Auth::user()->role == 'user')
+
+                @include('inc.user_sidebar')
+                
+            @endif
+        
+       
+
+        @else
+
+        @include('inc.sidebar')
+
+        @endauth
+
+        
 
         <!--  BEGIN CONTENT PART  -->
         <div id="content" class="main-content">

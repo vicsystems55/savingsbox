@@ -40,6 +40,7 @@ Route::group(['middleware' => ['auth','admin'], 'prefix' => 'admin'], function()
 
 
     Route::get('/members', 'AdminPageController@members')->name('admin.members');
+    Route::get('/single_member/{id}', 'AdminPageController@single_member')->name('admin.single_member');
     Route::get('/support', 'AdminPageController@support')->name('admin.support');
     Route::get('/notifications', 'AdminPageController@notifications')->name('admin.notifications');
     Route::get('/single_notification', 'AdminPageController@single_notification')->name('admin.single_notification');
