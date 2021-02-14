@@ -23,6 +23,16 @@
       {{-- Dashboard --}}
       <script src="{{asset('plugins/apex/apexcharts.min.js')}}"></script>
       <script src="{{asset('assets/js/dashboard/dash_2.js')}}"></script>
+      <script src="{{asset('assets/js/scrollspyNav.js')}}"></script>
+      <script src="{{asset('plugins/flatpickr/flatpickr.js')}}"></script>
+      <script src="{{asset('plugins/noUiSlider/nouislider.min.js')}}"></script>
+      <script src="{{asset('plugins/flatpickr/custom-flatpickr.js')}}"></script>
+      <script src="{{asset('plugins/noUiSlider/custom-nouiSlider.js')}}"></script>
+      <script src="{{asset('plugins/bootstrap-range-Slider/bootstrap-rangeSlider.js')}}"></script>
+      <script src="{{asset('plugins/fullcalendar/moment.min.js')}}"></script>
+      <script src="{{asset('plugins/flatpickr/flatpickr.js')}}"></script>
+      <script src="{{asset('plugins/fullcalendar/fullcalendar.min.js')}}"></script>
+      <script src="{{asset('plugins/fullcalendar/custom-fullcalendar.advance.js')}}"></script>    
       @break
 
     @case('sales')
@@ -1002,6 +1012,15 @@
       <script src="{{asset('plugins/flatpickr/custom-flatpickr.js')}}"></script>
       <script src="{{asset('plugins/noUiSlider/custom-nouiSlider.js')}}"></script>
       <script src="{{asset('plugins/bootstrap-range-Slider/bootstrap-rangeSlider.js')}}"></script>      
+     
+      <script>
+          var f2 = flatpickr(document.getElementById('dateTimeFlatpickr'), {
+                  enableTime: true,
+                  dateFormat: "Y-m-d H:i",
+              });
+        
+        </script>
+        
       @break
     
     @case('file_upload')

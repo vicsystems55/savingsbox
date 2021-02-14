@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\UserProfile;
+
+use App\UserCard;
+
+use Auth;
+
 class UserPageController extends Controller
 {
     /**
@@ -69,6 +75,24 @@ class UserPageController extends Controller
         return view('users.single_package')->with($data);
     }
 
+    public function subscription_setup()
+    {
+
+        $user_cards = UserCard::where('user_id', Auth::user()->id)->latest()->get();
+
+        $data = [
+            'category_name' => 'forms',
+            'page_name' => 'date_range_picker',
+            'has_scrollspy' => 1,
+            'scrollspy_offset' => 100,
+
+        ];
+        // $pageName = 'date_range_picker';
+        return view('users.subscription_setup',[
+            'user_cards' => $user_cards
+        ])->with($data);
+    }
+
     public function settings()
     {
         //
@@ -87,6 +111,10 @@ class UserPageController extends Controller
     {
         //
 
+        $user_data = UserProfile::where('user_id', Auth::user()->id)->first();
+
+        $user_cards = UserCard::where('user_id', Auth::user()->id)->get();
+
          // $category_name = '';
          $data = [
             'category_name' => 'users',
@@ -96,7 +124,10 @@ class UserPageController extends Controller
 
         ];
         // $pageName = 'account_settings';
-        return view('users.my_profile')->with($data);
+        return view('users.my_profile', [
+            'user_data' => $user_data,
+            'user_cards' => $user_cards
+        ])->with($data);
     }
 
 

@@ -15,8 +15,29 @@
 @switch($page_name)
     @case('analytics')
       {{-- Dashboard --}}
-<link href="{{asset('plugins/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">
-<link href="{{asset('assets/css/dashboard/dash_2.css')}}" rel="stylesheet" type="text/css" />
+      <link href="{{asset('plugins/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">
+      <link href="{{asset('assets/css/dashboard/dash_2.css')}}" rel="stylesheet" type="text/css" />
+      <link href="{{asset('plugins/flatpickr/flatpickr.css')}}" rel="stylesheet" type="text/css">
+      <link href="{{asset('plugins/noUiSlider/nouislider.min.css')}}" rel="stylesheet" type="text/css">
+      <link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+      <link href="{{asset('plugins/flatpickr/custom-flatpickr.css')}}" rel="stylesheet" type="text/css">
+      <link href="{{asset('plugins/noUiSlider/custom-nouiSlider.css')}}" rel="stylesheet" type="text/css">
+      <link href="{{asset('plugins/bootstrap-range-Slider/bootstrap-slider.css')}}" rel="stylesheet" type="text/css">
+      <link href="{{asset('plugins/fullcalendar/fullcalendar.css')}}" rel="stylesheet" type="text/css" />
+      <link href="{{asset('plugins/fullcalendar/custom-fullcalendar.advance.css')}}" rel="stylesheet" type="text/css" />
+      <link href="{{asset('plugins/flatpickr/flatpickr.css')}}" rel="stylesheet" type="text/css">
+      <link href="{{asset('plugins/flatpickr/custom-flatpickr.css')}}" rel="stylesheet" type="text/css">
+      <link href="{{asset('assets/css/forms/theme-checkbox-radio.css')}}" rel="stylesheet" type="text/css" />
+      
+      <style>
+          .widget-content-area { border-radius: 6px;
+              -webkit-box-shadow: 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12), 0 3px 5px -1px rgba(0,0,0,.2);
+              -moz-box-shadow: 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12), 0 3px 5px -1px rgba(0,0,0,.2);
+              box-shadow: 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12), 0 3px 5px -1px rgba(0,0,0,.2); }
+          .daterangepicker.dropdown-menu {
+              z-index: 1059;
+          }
+      </style>
       @break
 
     @case('sales')
@@ -878,6 +899,8 @@
       {{-- User Account Settings --}}
       <link rel="stylesheet" type="text/css" href="{{asset('plugins/dropify/dropify.min.css')}}">
       <link href="{{asset('assets/css/users/account-setting.css')}}" rel="stylesheet" type="text/css" />
+      <link href="{{asset('plugins/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('assets/css/dashboard/dash_2.css')}}" rel="stylesheet" type="text/css" />
       @break
 
     @case('profile')

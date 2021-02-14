@@ -91,6 +91,20 @@ class AdminPageController extends Controller
         return view('admin.reliance_packages')->with($data);
     }
 
+    public function single_package($id)
+    {
+        # code...
+
+        $data = [
+            'category_name' => 'reliance_packages',
+            'page_name' => 'reliance_packages',
+            'has_scrollspy' => 0,
+            'scrollspy_offset' => '',
+        ];
+
+        return view('admin.single_package')->with($data);
+    }
+
     public function single_member($id)
     {
         # code...
@@ -110,6 +124,29 @@ class AdminPageController extends Controller
         // $pageName = 'account_settings';
         return view('admin.single_member',[
             'single_member' => $single_member
+        ])->with($data);
+    }
+
+
+    public function notifications()
+    {
+        # code...
+
+        //
+
+       
+
+         // $category_name = '';
+         $data = [
+            'category_name' => 'notifications',
+            'page_name' => 'notifications',
+            'has_scrollspy' => 0,
+            'scrollspy_offset' => '',
+
+        ];
+        // $pageName = 'account_settings';
+        return view('admin.notifications',[
+          
         ])->with($data);
     }
 

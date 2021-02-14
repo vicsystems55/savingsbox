@@ -27,11 +27,15 @@ Route::group(['middleware' => ['auth','user'], 'prefix' => 'user'], function(){
     Route::get('/', 'UserPageController@dashboard')->name('user');
     Route::get('/notifications', 'UserPageController@notifications')->name('user.notifications');
     Route::get('/reliance_packages', 'UserPageController@reliance_packages')->name('user.reliance_packages');
+    Route::get('/single_package/{id}', 'UserPageController@single_package')->name('user.single_package');
+    Route::get('/subscription_setup', 'UserPageController@subscription_setup')->name('user.subscription_setup');
+    Route::post('/create_payment_schedule', 'PaymentScheduleController@create_payment_schedule')->name('user.create_payment_schedule');
+    Route::get('/payment_schedule/{custom_name}', 'PaymentScheduleController@payment_schedule')->name('user.payment_schedule');
     Route::get('/settings', 'UserPageController@settings')->name('user.settings');
     Route::get('/my_profile', 'UserPageController@my_profile')->name('user.my_profile');
+    Route::post('/bank_info', 'UserProfileController@bank_info')->name('user.bank_info');
     Route::get('/support', 'UserPageController@support')->name('user.support');
-    Route::get('/', 'UserPageController@dashboard')->name('user');
-    Route::get('/', 'UserPageController@dashboard')->name('user');
+
 
 });
 
@@ -53,6 +57,16 @@ Route::group(['middleware' => ['auth','admin'], 'prefix' => 'admin'], function()
     Route::get('/single_payout', 'AdminPageController@single_payout')->name('admin.single_payout');
 
 });
+
+Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
+
+Route::post('/add_card', 'UserCardController@add_card')->name('add_card');
+
+// Route::get('/callback_card_add', 'UserCardController@add_card')->name('add_card');
+
+Route::get('/callback_card_add', 'UserCardController@callback_card_add')->name('callback_add_card');
+
+
 
 Route::group([] , function() {
 
@@ -1345,9 +1359,9 @@ Route::group([] , function() {
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index');
+// Route::get('/', 'HomeController@index');
 
 
 Route::get('/', function() {
-    return redirect('/sales');    
+    return redirect('/login');    
 });

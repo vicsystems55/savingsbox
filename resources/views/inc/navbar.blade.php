@@ -7,11 +7,11 @@
             <ul class="navbar-item theme-brand flex-row  text-center">
                 <li class="nav-item theme-logo">
                     <a href="/analytics">
-                        <img src="{{config('app.url')}}img/90x90.jpg" class="navbar-logo" alt="logo">
+                        <img src="{{config('app.url')}}avatar/avatar.png" class="navbar-logo" alt="logo">
                     </a>
                 </li>
                 <li class="nav-item theme-text">
-                    <a href="/analytics" class="nav-link"> CORK </a>
+                    <a href="/analytics" class="nav-link"> RelianceCooperative </a>
                 </li>
             </ul>
 
@@ -30,17 +30,7 @@
 
             <ul class="navbar-item flex-row ml-md-auto">
                 @if ($category_name != 'starter_kits')
-                <li class="nav-item dropdown language-dropdown">
-                    <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="language-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="{{config('app.url')}}img/ca.png" class="flag-width" alt="flag">
-                    </a>
-                    <div class="dropdown-menu position-absolute" aria-labelledby="language-dropdown">
-                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{asset('storage/img/de.png')}}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;German</span></a>
-                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{asset('storage/img/jp.png')}}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;Japanese</span></a>
-                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{asset('storage/img/fr.png')}}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;French</span></a>
-                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{asset('storage/img/ca.png')}}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;English</span></a>
-                    </div>
-                </li>
+                
 
                 <li class="nav-item dropdown message-dropdown">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="messageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,12 +43,12 @@
 
                                     <div class="media">
                                         <div class="user-img">
-                                            <img class="usr-img rounded-circle" src="{{asset('storage/img/90x90.jpg')}}" alt="profile">
+                                            <img class="usr-img rounded-circle" src="{{config('app.url')}}avatar/avatar.png" alt="profile">
                                         </div>
                                         <div class="media-body">
                                             <div class="">
-                                                <h5 class="usr-name">Kara Young</h5>
-                                                <p class="msg-title">ACCOUNT UPDATE</p>
+                                                <!-- <h5 class="usr-name">name</h5>
+                                                <p class="msg-title">role</p> -->
                                             </div>
                                         </div>
                                     </div>
@@ -70,7 +60,7 @@
 
                                     <div class="media">
                                         <div class="user-img">
-                                            <img class="usr-img rounded-circle" src="{{asset('storage/img/90x90.jpg')}}" alt="profile">
+                                            <img class="usr-img rounded-circle" src="{{config('app.url')}}avatar/avatar.png" alt="profile">
                                         </div>
                                         <div class="media-body">
                                             <div class="">
@@ -87,12 +77,12 @@
 
                                     <div class="media">
                                         <div class="user-img">
-                                            <img class="usr-img rounded-circle" src="{{config('app.url')}}img/90x90.jpg" alt="profile">
+                                            <img class="usr-img rounded-circle" src="{{config('app.url')}}avatar/avatar.png" alt="profile">
                                         </div>
                                         <div class="media-body">
                                             <div class="">
-                                                <h5 class="usr-name">Oscar Garner</h5>
-                                                <p class="msg-title">ACCOUNT UPDATE</p>
+                                                <!-- <h5 class="usr-name">name</h5>
+                                                <p class="msg-title">role</p> -->
                                             </div>
                                         </div>
                                     </div>
@@ -143,7 +133,7 @@
                 
                 <li class="nav-item dropdown user-profile-dropdown">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <img src="{{asset('storage/img/90x90.jpg')}}" alt="avatar">
+                        <img src="{{config('app.url')}}avatar/avatar.png" alt="avatar">
                     </a>
                     <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
                         <div class="">

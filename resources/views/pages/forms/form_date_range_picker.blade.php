@@ -73,11 +73,11 @@ var f1 = flatpickr(document.getElementById('basicFlatpickr'));
 
                                         <div class="code-section text-left">
                                             <pre>
-var f2 = flatpickr(document.getElementById('dateTimeFlatpickr'), {
-    enableTime: true,
-    dateFormat: "Y-m-d H:i",
-});
-</pre>
+                                                var f2 = flatpickr(document.getElementById('dateTimeFlatpickr'), {
+                                                    enableTime: true,
+                                                    dateFormat: "Y-m-d H:i",
+                                                });
+                                                </pre>
                                         </div>
                                     </div>
                                 </div>
@@ -517,32 +517,7 @@ nonLinearSlider.noUiSlider.on('update', function ( values, handle, unencoded, is
 
 
                                         <div class="code-section text-left">
-                                            <pre>
-=============
-    HTML
-=============
-
-&lt;div class="container"&gt;
-    &lt;div class="row mb-4"&gt;
-        &lt;div class="col-lg-12 mb-5"&gt;
-            &lt;div id="slider1"&gt;&lt;/div&gt;
-            &lt;span class="example-val mt-4 d-inline-block" id="slider1-span"&gt;&lt;/span&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;br/&gt;
-    &lt;div class="row mb-0"&gt;
-        &lt;div class="col-lg-12 mb-5"&gt;
-            &lt;div id="slider2"&gt;&lt;/div&gt;
-            &lt;span class="example-val mt-4 d-inline-block" id="slider2-span"&gt;&lt;/span&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="row"&gt;                                              
-        &lt;div class="col-lg-12"&gt;
-            &lt;button id="lockbutton" class="btn btn-primary mb-4" style="float: right; margin: 20px 0 0;"&gt;lock&lt;/button&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</pre>
+                                      
                                         </div>
                                     </div>
 
@@ -552,108 +527,7 @@ nonLinearSlider.noUiSlider.on('update', function ( values, handle, unencoded, is
                                         <button class="btn toggle-code-snippet"><span>JS</span></button>
 
                                         <div class="code-section text-left">
-                                            <pre>
-
-=============
-   Javascript
-=============
-    
-/*-----Locking sliders together-----*/
-
-// setting up button clicks
-
-// Store the locked state and slider values.
-
-var lockedState = false,
-    lockedSlider = false,
-    lockedValues = [60, 80],
-    slider1 = document.getElementById('slider1'),
-    slider2 = document.getElementById('slider2'),
-    lockButton = document.getElementById('lockbutton'),
-    slider1Value = document.getElementById('slider1-span'),
-    slider2Value = document.getElementById('slider2-span');
-
-// When the button is clicked, the locked
-// state is inverted.
-
-lockButton.addEventListener('click', function(){
-    lockedState = !lockedState;
-    this.textContent = lockedState ? 'unlock' : 'lock';
-});
-
-
-// cross updating
-
-function crossUpdate ( value, slider ) {
-
-    // If the sliders aren't interlocked, don't
-    // cross-update.
-    if ( !lockedState ) return;
-
-    // Select whether to increase or decrease
-    // the other slider value.
-    var a = slider1 === slider ? 0 : 1, b = a ? 0 : 1;
-
-    // Offset the slider value.
-    value -= lockedValues[b] - lockedValues[a];
-
-    // Set the value
-    slider.noUiSlider.set(value);
-}
-
-// initializing silders
-
-noUiSlider.create(slider1, {
-    start: 60,
-    // Disable animation on value-setting,
-    // so the sliders respond immediately.
-    animate: false,
-    tooltips: true,
-    range: {
-        min: 50,
-        max: 100
-    }
-});
-
-noUiSlider.create(slider2, {
-    start: 80,
-    animate: false,
-    tooltips: true,
-    range: {
-        min: 50,
-        max: 100
-    }
-});
-
-slider1.noUiSlider.on('update', function( values, handle ){
-    slider1Value.innerHTML = values[handle];
-});
-
-slider2.noUiSlider.on('update', function( values, handle ){
-    slider2Value.innerHTML = values[handle];
-});
-
-// linking sliders together
-
-function setLockedValues ( ) {
-    lockedValues = [
-        Number(slider1.noUiSlider.get()),
-        Number(slider2.noUiSlider.get())
-    ];
-}
-
-slider1.noUiSlider.on('change', setLockedValues);
-slider2.noUiSlider.on('change', setLockedValues);
-
-// The value will be send to the other slider,
-// using a custom function as the serialization
-// method. The function uses the global 'lockedState'
-// variable to decide whether the other slider is updated.
-
-slider1.noUiSlider.on('slide', function( values, handle ){
-    crossUpdate(values[handle], slider2);
-});
-</pre>
+                                            
                                         </div>
                                     </div>
 
