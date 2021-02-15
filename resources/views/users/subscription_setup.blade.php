@@ -1,8 +1,9 @@
 @extends('layouts.app')
+<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 
 @section('content')
 
-<div class="layout-px-spacing">
+<div  class="layout-px-spacing">
 
     <h4 class=" display-4 mt-3">December Jollification</h4>
 
@@ -16,6 +17,10 @@
             <p class="alert alert-danger">
                     @error('authorization_code')
                             <strong>Please Select a Card</strong>  
+                    @enderror
+
+                    @error('custom_name')
+                            <strong>This Schedule already Exist</strong>  
                     @enderror
             </p>
             @endif
@@ -36,6 +41,73 @@
                             <label for="">Start Date</label>
                             <input onchange="backlogValue(this.id)" name="start_date" id="dateTimeFlatpickr" value="{{Carbon\Carbon::now()->format('Y')}}-{{Carbon\Carbon::now()->format('m')}}-{{Carbon\Carbon::now()->format('d')}}" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date..">
                         </div>
+
+                        <script>
+
+                               function loadPage() {
+
+                                   console.log('landed');
+
+                                var current_year = moment().format('Y');
+
+                                var choosen_date = moment().format('Y-M-D');
+
+                                var start_year = moment(current_year +"-01-01").format('Y-M-D');
+
+                                var end_date = moment(current_year +"-11-03").format('YYYY-MM-DD');
+
+                                var monthDifference =  moment(new Date(choosen_date)).diff(new Date(start_year), 'months', true);
+
+                                var backlog = numeral(monthDifference * 1550).format('0,0.00');
+                                
+                                console.log(backlog);
+
+                                console.log(choosen_date);
+
+                                    console.log(start_year);
+
+                                    console.log(monthDifference);
+
+                                document.getElementById('backlog_holder').innerHTML= backlog;
+
+                                document.getElementById('backlog_pay_amount').value = numeral(monthDifference * 155000).format('00000');
+
+                               }
+
+
+                                function backlogValue(start_date) {
+
+                                    
+                                    var current_year = moment().format('Y');
+
+                                    var choosen_date = moment(document.getElementById(start_date).value).format('Y-M-D');
+
+                                    var start_year = moment(current_year +"-01-01").format('Y-M-D');
+
+                                    var end_date = moment(current_year +"-11-03").format('YYYY-MM-DD');
+
+                                    var monthDifference =  moment(new Date(choosen_date)).diff(new Date(start_year), 'months', true);
+
+                                    console.log(choosen_date);
+
+                                    console.log(start_year);
+
+                                    console.log(monthDifference);
+
+                                    var backlog = numeral(monthDifference * 1550).format('0,0.00');
+
+                                    document.getElementById('backlog_holder').innerHTML= backlog;
+
+                                    document.getElementById('backlog_pay_amount').value = numeral(monthDifference * 155000).format('00000');
+
+                                    // console.log(moment().format('Y-M-D h:mm'));
+
+                                    // console.log(current_year);
+
+                                    // console.log(document.getElementById(start_date).value);
+                                    
+                                }
+                        </script>
 
                         <div class="form-group">
                             <label for="">Deduction Amount</label>
@@ -100,7 +172,7 @@
 
                         ?>
 
-                        <h1 class="text-center">NGN {{number_format($back_log, 2)}}</h1>
+                        <h1  class="text-center">NGN <span id="backlog_holder"></span> </h1>
 
                         <form method="POST" action="{{ route('add_card') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
                             <div class="" style="">
@@ -108,7 +180,7 @@
                                     
                                     <input type="hidden" name="email" value="{{Auth::user()->email}}"> {{-- required --}}
                                     <input type="hidden" name="orderID" value="345">
-                                    <input type="hidden" name="amount" value="{{$back_log * 100}}"> {{-- required in kobo --}}
+                                    <input id="backlog_pay_amount" type="hidden" name="amount" > {{-- required in kobo --}}
                                     <input type="hidden" name="quantity" value="1">
                                     <input type="hidden" name="currency" value="NGN">
                                     <input type="hidden" name="callback_url" value="{{config('app.url')}}callback_card_add">

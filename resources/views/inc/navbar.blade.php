@@ -5,9 +5,9 @@
         <header class="header navbar navbar-expand-sm">
 
             <ul class="navbar-item theme-brand flex-row  text-center">
-                <li class="nav-item theme-logo">
+                <li class="nav-item theme-log">
                     <a href="/analytics">
-                        <img src="{{config('app.url')}}avatar/avatar.png" class="navbar-logo" alt="logo">
+                        <img width="50px" src="{{config('app.url')}}logo/logo.png" class="navbar-logo" alt="logo">
                     </a>
                 </li>
                 <li class="nav-item theme-text">

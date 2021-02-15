@@ -4,6 +4,57 @@
 
     <div class="layout-px-spacing">
 
+            <div class="container pt-5">
+                <div class="row overflow-auto flex-row flex-nowrap  mt-4 pb-4 pt-2">
+                
+                    @forelse($my_subscriptions as $sub)
+
+                    <div  style="min-width:350px;" class="col-6">
+                        <div class="widget widget-card-four">
+                            <div class="widget-content">
+                                <div class="w-content">
+                                    <div class="w-info">
+
+                                    <?php
+
+                                        $my_sub_sum = App\PaymentSchedule::where('custom_name', $sub->custom_name)->sum('deduction_amount');
+
+                                    ?>
+                                        
+                                        <p class="">{{$sub->packages->package_name}}</p>
+                                        <h5>{{$sub->custom_name}}</h5>
+
+                                        <p>{{$sub->start_date}}  to  {{$sub->end_date}}</p>
+                                    </div>
+                                    <div class="">
+                                        <div class="w-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 class="mt-2">NGN 0 / NGN {{number_format($my_sub_sum, 2)}}</h5>
+                                <div class="progress">
+                                    <div class="progress-bar bg-gradient-secondary" role="progressbar" style="width: 57%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+
+                                <div class="justity-content-center mt-2 ">
+                                    <a href="{{route('user.payment_schedule', $sub->custom_name)}}" class="btn btn-primary shadow text-center">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @empty
+
+                    <h4 class="text-center">You have no current subscriptions</h4>
+
+                    @endforelse
+
+
+                </div>
+            </div>
+
         <div class="row layout-top-spacing">
 
             <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">

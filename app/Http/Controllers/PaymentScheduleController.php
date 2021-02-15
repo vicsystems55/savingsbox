@@ -65,6 +65,9 @@ class PaymentScheduleController extends Controller
         $this->validate($request, [
 
             'authorization_code' => 'required',
+            'custom_name' => 'unique:payment_schedules'
+
+            
           
             
         ]);
@@ -83,9 +86,11 @@ class PaymentScheduleController extends Controller
 
         $diff_in_months = $end_date->diffInMonths($start_date);
 
-        // dd($diff_in_months);
 
-        for ($i=0; $i < $diff_in_months ; $i++) { 
+
+        // dd($diff_in_months + 1);
+
+        for ($i=0; $i <= $diff_in_months + 1  ; $i++) { 
             # code...
            
 

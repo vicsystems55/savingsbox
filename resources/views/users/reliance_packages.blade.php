@@ -4,7 +4,7 @@
 
     <div class="layout-px-spacing">
 
-        <div class="">
+        <div class="v">
 
             
                 <h1>Our Packages</h1>

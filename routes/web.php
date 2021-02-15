@@ -33,6 +33,7 @@ Route::group(['middleware' => ['auth','user'], 'prefix' => 'user'], function(){
     Route::get('/payment_schedule/{custom_name}', 'PaymentScheduleController@payment_schedule')->name('user.payment_schedule');
     Route::get('/settings', 'UserPageController@settings')->name('user.settings');
     Route::get('/my_profile', 'UserPageController@my_profile')->name('user.my_profile');
+    Route::get('/my_subscriptions', 'UserPageController@my_subscriptions')->name('user.my_subscriptions');
     Route::post('/bank_info', 'UserProfileController@bank_info')->name('user.bank_info');
     Route::get('/support', 'UserPageController@support')->name('user.support');
 

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\UserProfile;
 
+use App\PaymentSchedule;
+
 use App\UserCard;
 
 use Auth;
@@ -28,7 +30,59 @@ class UserPageController extends Controller
             'scrollspy_offset' => '',
         ];
 
-        return view('users.dashboard')->with($data);
+            $my_subscriptions = PaymentSchedule::with('packages')->where('user_id', Auth::user()->id)->latest()->get()->unique('custom_name');
+
+            // $payment_custom = PaymentSchedule::where('custom_name', $payment_schedule[0]->custom_name)->latest()->get();
+
+            // dd($my_subscriptions);
+
+        return view('users.dashboard',[
+            'my_subscriptions' => $my_subscriptions
+        ])->with($data);
+    }
+
+    public function my_subscriptions()
+    {
+        //
+
+        $data = [
+            'category_name' => 'dashboard',
+            'page_name' => 'analytics',
+            'has_scrollspy' => 0,
+            'scrollspy_offset' => '',
+        ];
+
+            $my_subscriptions = PaymentSchedule::with('packages')->where('user_id', Auth::user()->id)->latest()->get()->unique('custom_name');
+
+            // $payment_custom = PaymentSchedule::where('custom_name', $payment_schedule[0]->custom_name)->latest()->get();
+
+            // dd($my_subscriptions);
+
+        return view('users.my_subscriptions',[
+            'my_subscriptions' => $my_subscriptions
+        ])->with($data);
+    }
+
+    public function single_subscriptions($custom_name)
+    {
+        //
+
+        $data = [
+            'category_name' => 'dashboard',
+            'page_name' => 'analytics',
+            'has_scrollspy' => 0,
+            'scrollspy_offset' => '',
+        ];
+
+            $single_subscription = PaymentSchedule::with('packages')->where('user_id', Auth::user()->id)->where('custom_name', $custom_name)->get();
+
+            // $payment_custom = PaymentSchedule::where('custom_name', $payment_schedule[0]->custom_name)->latest()->get();
+
+            // dd($my_subscriptions);
+
+        return view('users.single_subscription',[
+            'single_subscription' => $single_subscription
+        ])->with($data);
     }
 
 

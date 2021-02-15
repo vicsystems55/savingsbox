@@ -60,6 +60,8 @@ class UserCardController extends Controller
 
         $paymentDetails = Paystack::getPaymentData();
 
+        // dd($paymentDetails);
+
 
         $user_card = UserCard::create([
             'authorization_code' => $paymentDetails['data']['authorization']['authorization_code'],
