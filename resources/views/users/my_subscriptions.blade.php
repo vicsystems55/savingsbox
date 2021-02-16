@@ -35,8 +35,26 @@
                                             </td>
                                             <td>{{$sub->custom_name}}</td>
                                             <td>{{$sub->packages->package_name}}</td>
-                                            <td>{{$sub->start_date}}</td>
-                                            <td>{{$sub->end_date}}</td>
+
+                                            <?php
+                                                $sd = new Carbon\Carbon($sub->start_date);
+                                                $sd = $sd->format('d');
+                                                $sm = new Carbon\Carbon($sub->start_date);
+                                                $sm = $sm->format('M');
+                                                $sy = new Carbon\Carbon($sub->start_date);
+                                                $sy = $sy->format('Y');
+
+                                                $ed = new Carbon\Carbon($sub->end_date);
+                                                $ed = $ed->format('d');
+                                                $em = new Carbon\Carbon($sub->end_date);
+                                                $em = $em->format('M');
+                                                $ey = new Carbon\Carbon($sub->end_date);
+                                                $ey = $ey->format('Y');
+                                            ?>
+
+                                            <td>{{$sd}} {{$sm}}, {{$sy}}</td>
+                                            <td>{{$ed}} {{$em}}, {{$ey}}</td>
+                                          
                                             
                                             <td>
                                                 <a href="{{route('user.payment_schedule', $sub->custom_name)}}" class="btn btn-primary shadow">view more</a>

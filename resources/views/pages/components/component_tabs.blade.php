@@ -635,63 +635,8 @@
                                         <button class="btn toggle-code-snippet"><span>Code</span></button>
 
                                         <div class="code-section text-left">
-                                            <pre>
-&lt;div class="row mb-4 mt-3"&gt;
-    &lt;div class="col-sm-3 col-12"&gt;
-        &lt;div class="nav flex-column nav-pills mb-sm-0 mb-3   text-center mx-auto" id="v-border-pills-tab" role="tablist" aria-orientation="vertical"&gt;
-          &lt;a class="nav-link active" id="v-border-pills-home-tab" data-toggle="pill" href="#v-border-pills-home" role="tab" aria-controls="v-border-pills-home" aria-selected="true"&gt;Home&lt;/a&gt;
-          &lt;a class="nav-link  text-center" id="v-border-pills-profile-tab" data-toggle="pill" href="#v-border-pills-profile" role="tab" aria-controls="v-border-pills-profile" aria-selected="false"&gt;Profile&lt;/a&gt;
-          &lt;a class="nav-link  text-center" id="v-border-pills-messages-tab" data-toggle="pill" href="#v-border-pills-messages" role="tab" aria-controls="v-border-pills-messages" aria-selected="false"&gt;Messages&lt;/a&gt;
-          &lt;a class="nav-link  text-center" id="v-border-pills-settings-tab" data-toggle="pill" href="#v-border-pills-settings" role="tab" aria-controls="v-border-pills-settings" aria-selected="false"&gt;Settings&lt;/a&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
+                                            
 
-    &lt;div class="col-sm-9 col-12"&gt;
-        &lt;div class="tab-content" id="v-border-pills-tabContent"&gt;
-          &lt;div class="tab-pane fade show active" id="v-border-pills-home" role="tabpanel" aria-labelledby="v-border-pills-home-tab"&gt;
-            &lt;h4 class="mb-4"&gt;We move your world!&lt;/h4&gt;
-            &lt;p class="mb-4"&gt;
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            &lt;/p&gt;
-
-            &lt;p&gt;
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            &lt;/p&gt;
-          &lt;/div&gt;
-          &lt;div class="tab-pane fade" id="v-border-pills-profile" role="tabpanel" aria-labelledby="v-border-pills-profile-tab"&gt;
-
-            &lt;div class="media"&gt;
-                &lt;img class="mr-3 rounded-circle" src="{{asset('storage/img/90x90.jpg')}}" alt="Generic placeholder image"&gt;
-                &lt;div class="media-body"&gt;
-                    &lt;h5 class="mt-0 mb-3"&gt;Media heading&lt;/h5&gt;
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                &lt;/div&gt;
-            &lt;/div&gt;
-
-          &lt;/div&gt;
-          &lt;div class="tab-pane fade" id="v-border-pills-messages" role="tabpanel" aria-labelledby="v-border-pills-messages-tab"&gt;
-            &lt;p class="dropcap  dc-outline-primary"&gt;
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            &lt;/p&gt;
-          &lt;/div&gt;
-
-          &lt;div class="tab-pane fade" id="v-border-pills-settings" role="tabpanel" aria-labelledby="v-border-pills-settings-tab"&gt;
-                &lt;blockquote class="blockquote"&gt;
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                &lt;/blockquote&gt;
-          &lt;/div&gt;
-
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</pre>
                                         </div>
                                     </div>
 

@@ -91,10 +91,11 @@ class UserPageController extends Controller
         //
 
         $data = [
-            'category_name' => 'dashboard',
-            'page_name' => 'analytics',
-            'has_scrollspy' => 0,
-            'scrollspy_offset' => '',
+            'category_name' => 'components',
+            'page_name' => 'list_group',
+            'has_scrollspy' => 1,
+            'scrollspy_offset' => 100,
+
         ];
 
         return view('users.notifications')->with($data);

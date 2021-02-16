@@ -28,6 +28,9 @@
       <link href="{{asset('plugins/flatpickr/flatpickr.css')}}" rel="stylesheet" type="text/css">
       <link href="{{asset('plugins/flatpickr/custom-flatpickr.css')}}" rel="stylesheet" type="text/css">
       <link href="{{asset('assets/css/forms/theme-checkbox-radio.css')}}" rel="stylesheet" type="text/css" />
+
+      <link href="{{asset('plugins/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('assets/css/dashboard/dash_1.css')}}" rel="stylesheet" type="text/css" />
       
       <style>
           .widget-content-area { border-radius: 6px;

@@ -30,12 +30,25 @@
 
                                 @foreach($my_schedule as $schedule)
 
+                                            <?php
+                                                $sd = new Carbon\Carbon($schedule->date);
+                                                $sd = $sd->format('d');
+                                                $sm = new Carbon\Carbon($schedule->date);
+                                                $sm = $sm->format('M');
+                                                $sy = new Carbon\Carbon($schedule->date);
+                                                $sy = $sy->format('Y');
+
+                                               
+                                            ?>
+
+                                           
+
                                     <tr class="{{$schedule->status=='processed'?'bg-success':''}}">
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$schedule->date}}</td>
-                                        <td>{{$schedule->deduction_amount}}</td>
-                                        <td>{{$schedule->deducted_amount}}</td>
-                                        <td>{{$schedule->left}}</td>
+                                        <td>{{$sd}} {{$sm}}, {{$sy}}</td>
+                                        <td>NGN {{number_format($schedule->deduction_amount, 2)}}</td>
+                                        <td>NGN {{number_format($schedule->deducted_amount, 2)}}</td>
+                                        <td>NGN {{number_format($schedule->left, 2)}}</td>
                                         <td>{{$schedule->status}}</td>
                                         <td>
 

@@ -11,146 +11,7 @@
 
     <div class="row">
 
-        <div class="col-md-6">
-
-            @if(count($errors)>0)
-            <p class="alert alert-danger">
-                    @error('authorization_code')
-                            <strong>Please Select a Card</strong>  
-                    @enderror
-
-                    @error('custom_name')
-                            <strong>This Schedule already Exist</strong>  
-                    @enderror
-            </p>
-            @endif
-
-            
-                <div class="card">
-                    <div class="card-body">
-
-                        <form method="post" action="{{route('user.create_payment_schedule')}}">
-
-                        @csrf
-                        
-                        <div class="form-group">
-                            <label for="">Custom Name</label>
-                            <input type="text" name="custom_name" value="{{Carbon\Carbon::now()->format('M')}}-{{rand(33223,99999)}}" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Start Date</label>
-                            <input onchange="backlogValue(this.id)" name="start_date" id="dateTimeFlatpickr" value="{{Carbon\Carbon::now()->format('Y')}}-{{Carbon\Carbon::now()->format('m')}}-{{Carbon\Carbon::now()->format('d')}}" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date..">
-                        </div>
-
-                        <script>
-
-                               function loadPage() {
-
-                                   console.log('landed');
-
-                                var current_year = moment().format('Y');
-
-                                var choosen_date = moment().format('Y-M-D');
-
-                                var start_year = moment(current_year +"-01-01").format('Y-M-D');
-
-                                var end_date = moment(current_year +"-11-03").format('YYYY-MM-DD');
-
-                                var monthDifference =  moment(new Date(choosen_date)).diff(new Date(start_year), 'months', true);
-
-                                var backlog = numeral(monthDifference * 1550).format('0,0.00');
-                                
-                                console.log(backlog);
-
-                                console.log(choosen_date);
-
-                                    console.log(start_year);
-
-                                    console.log(monthDifference);
-
-                                document.getElementById('backlog_holder').innerHTML= backlog;
-
-                                document.getElementById('backlog_pay_amount').value = numeral(monthDifference * 155000).format('00000');
-
-                               }
-
-
-                                function backlogValue(start_date) {
-
-                                    
-                                    var current_year = moment().format('Y');
-
-                                    var choosen_date = moment(document.getElementById(start_date).value).format('Y-M-D');
-
-                                    var start_year = moment(current_year +"-01-01").format('Y-M-D');
-
-                                    var end_date = moment(current_year +"-11-03").format('YYYY-MM-DD');
-
-                                    var monthDifference =  moment(new Date(choosen_date)).diff(new Date(start_year), 'months', true);
-
-                                    console.log(choosen_date);
-
-                                    console.log(start_year);
-
-                                    console.log(monthDifference);
-
-                                    var backlog = numeral(monthDifference * 1550).format('0,0.00');
-
-                                    document.getElementById('backlog_holder').innerHTML= backlog;
-
-                                    document.getElementById('backlog_pay_amount').value = numeral(monthDifference * 155000).format('00000');
-
-                                    // console.log(moment().format('Y-M-D h:mm'));
-
-                                    // console.log(current_year);
-
-                                    // console.log(document.getElementById(start_date).value);
-                                    
-                                }
-                        </script>
-
-                        <div class="form-group">
-                            <label for="">Deduction Amount</label>
-                            <input type="hidden" name="deduction_amount" value="1550">
-                            <input  value="NGN {{number_format('1550', 2)}}" class="form-control flatpickr flatpickr-input active" type="text" >
-                        </div>
-
-                        <div class="form-group">
-                            <label for="">Frequecy</label>
-                            <select class="form-control" name="frequency" value="Monthly" id="">
-                            <option value="Monthly">Monthly</option>
-                                <option value="Daily">Daily</option>
-                                <option value="Weekly">Weekly</option>
-                                <option value="Biweekly">Biweekly</option>
-                                
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="">End Date</label>
-                            <input id="dateTimeFlatpickr" value="November, {{Carbon\Carbon::now()->format('Y')}}" class="form-control flatpickr flatpickr-input active" type="text"  readonly>
-                        </div>
-
-                        <input type="hidden" name="authorization_code" id="authcode_id">
-
-                        <div class="form-group">
-                            <button class="btn btn-primary btn-block btn-lg shadow">
-                                Submit
-                            </button>
-                        </div>
-
-                        </form>
-
-
-
-                    </div>
-                </div>
-
-        
-        </div>
-
-
-        <div class="col-md-6">
+            <div class="col-md-6">
 
 
                 <h4>Back Log Amount</h4>
@@ -259,9 +120,150 @@
 
                     </div>
                 </div>
-        
-        
-        </div>
+
+
+            </div>
+
+            <div class="col-md-6">
+
+                @if(count($errors)>0)
+                <p class="alert alert-danger">
+                        @error('authorization_code')
+                                <strong>Please Select a Card</strong>  
+                        @enderror
+
+                        @error('custom_name')
+                                <strong>This Schedule already Exist</strong>  
+                        @enderror
+                </p>
+                @endif
+
+                
+                    <div class="card">
+                        <div class="card-body">
+
+                            <form method="post" action="{{route('user.create_payment_schedule')}}">
+
+                            @csrf
+                            
+                            <div class="form-group">
+                                <label for="">Custom Name</label>
+                                <input type="text" name="custom_name" value="{{Carbon\Carbon::now()->format('M')}}-{{rand(33223,99999)}}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Start Date</label>
+                                <input onchange="backlogValue(this.id)" name="start_date" id="dateTimeFlatpickr" value="{{Carbon\Carbon::now()->format('Y')}}-{{Carbon\Carbon::now()->format('m')}}-{{Carbon\Carbon::now()->format('d')}}" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date..">
+                            </div>
+
+                            <script>
+
+                                function loadPage() {
+
+                                    console.log('landed');
+
+                                    var current_year = moment().format('Y');
+
+                                    var choosen_date = moment().format('Y-M-D');
+
+                                    var start_year = moment(current_year +"-01-01").format('Y-M-D');
+
+                                    var end_date = moment(current_year +"-11-03").format('YYYY-MM-DD');
+
+                                    var monthDifference =  moment(new Date(choosen_date)).diff(new Date(start_year), 'months', true);
+
+                                    var backlog = numeral(monthDifference * 1550).format('0,0.00');
+                                    
+                                    console.log(backlog);
+
+                                    console.log(choosen_date);
+
+                                        console.log(start_year);
+
+                                        console.log(monthDifference);
+
+                                    document.getElementById('backlog_holder').innerHTML= backlog;
+
+                                    document.getElementById('backlog_pay_amount').value = numeral(monthDifference * 155000).format('00000');
+
+                                }
+
+
+                                    function backlogValue(start_date) {
+
+                                        
+                                        var current_year = moment().format('Y');
+
+                                        var choosen_date = moment(document.getElementById(start_date).value).format('Y-M-D');
+
+                                        var start_year = moment(current_year +"-01-01").format('Y-M-D');
+
+                                        var end_date = moment(current_year +"-11-03").format('YYYY-MM-DD');
+
+                                        var monthDifference =  moment(new Date(choosen_date)).diff(new Date(start_year), 'months', true);
+
+                                        console.log(choosen_date);
+
+                                        console.log(start_year);
+
+                                        console.log(monthDifference);
+
+                                        var backlog = numeral(monthDifference * 1550).format('0,0.00');
+
+                                        document.getElementById('backlog_holder').innerHTML= backlog;
+
+                                        document.getElementById('backlog_pay_amount').value = numeral(monthDifference * 155000).format('00000');
+
+                                        // console.log(moment().format('Y-M-D h:mm'));
+
+                                        // console.log(current_year);
+
+                                        // console.log(document.getElementById(start_date).value);
+                                        
+                                    }
+                            </script>
+
+                            <div class="form-group">
+                                <label for="">Deduction Amount</label>
+                                <input type="hidden" name="deduction_amount" value="1550">
+                                <input  value="NGN {{number_format('1550', 2)}}" class="form-control flatpickr flatpickr-input active" type="text" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Frequency</label>
+                                <select class="form-control" name="frequency" value="Monthly" id="">
+                                <option value="Monthly">Monthly</option>
+                                    <option value="Daily">Daily</option>
+                                    <option value="Weekly">Weekly</option>
+                                    <option value="Biweekly">Biweekly</option>
+                                    
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">End Date</label>
+                                <input id="dateTimeFlatpickr" value="November, {{Carbon\Carbon::now()->format('Y')}}" class="form-control flatpickr flatpickr-input active" type="text"  readonly>
+                            </div>
+
+                            <input type="hidden" name="authorization_code" id="authcode_id">
+
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-block btn-lg shadow">
+                                    Submit
+                                </button>
+                            </div>
+
+                            </form>
+
+
+
+                        </div>
+                    </div>
+
+            
+            </div>
+
+
+       
 
     </div>
 

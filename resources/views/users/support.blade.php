@@ -7,7 +7,7 @@
         <div class="row layout-top-spacing">
 
             
-                <h1>coming soon...</h1>
+                <h1>Support</h1>
             
 
         </div>
