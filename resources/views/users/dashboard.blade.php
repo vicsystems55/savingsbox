@@ -22,6 +22,10 @@
 
                                         $my_sub_sum = App\PaymentSchedule::where('custom_name', $sub->custom_name)->sum('deduction_amount');
 
+                                        $my_paid_sum = App\PaymentSchedule::where('custom_name', $sub->custom_name)->sum('deducted_amount');
+
+                                        $percent = ($my_paid_sum / $my_sub_sum) * 100;
+
                                     ?>
                                         
                                         <p class="">{{$sub->packages->package_name}}</p>
@@ -54,9 +58,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h5 class="mt-2">NGN 0 / NGN {{number_format($my_sub_sum, 2)}}</h5>
+                                <h5 class="pt-3">NGN {{number_format($my_paid_sum, 2)}} / NGN {{number_format($my_sub_sum, 2)}}</h5>
                                 <div class="progress">
-                                    <div class="progress-bar bg-gradient-secondary" role="progressbar" style="width: 1%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-gradient-secondary" role="progressbar" style="width: {{$percent}}%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
 
                                 <div class="justity-content-center mt-2 ">

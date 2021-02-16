@@ -11,12 +11,12 @@
 
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="card bg-warning">
+                        <div style="min-width: 230px;" class="card bg-warning mb-3 shadow">
                             <div class="card-body">
                                 <h4>December Jollification</h4>
 
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci ad sed itaque porro ris aut minima dolor.
+                                   Choose from a variety of packages. <br> PLAN A, PLAN B, PLAN C, PLAN D, PLAN E.
                                 </p>
                             </div>
                             <div class="card-footer">
@@ -26,11 +26,11 @@
                     </div>
 
                     <div class="col-md-4">
-                        <div class="card bg-primary">
+                        <div style="min-width: 230px;" class="card bg-primary mb-3 shadow">
                             <div class="card-body">
                                 <h4>Steady Savings</h4>
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci ad sed itaque porro ris aut minima dolor.
+                                    Save concurrently for your personal projects, over any desired time.
                                 </p>
                                 
                             </div>
@@ -41,11 +41,11 @@
                     </div>
 
                     <div class="col-md-4">
-                        <div class="card bg-danger">
+                        <div style="min-width: 230px;" class="card bg-danger" mb-2 shadow>
                             <div class="card-body">
                                 <h4>Target Savings</h4>
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci ad sed itaque porro ris aut minima dolor.
+                                    Save towards a target amount.
                                 </p>
                             </div>
                             <div class="card-footer">

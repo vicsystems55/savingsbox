@@ -5,19 +5,22 @@
 
 <div  class="layout-px-spacing">
 
-    <h4 class=" display-4 mt-3">December Jollification</h4>
+    <h4 class=" display-4 mt-3">{{$plan_name}}</h4>
 
-    <h6>Setup</h6>
+    <h5>December Jollification</h5>
+
+   
 
     <div class="row">
 
             <div class="col-md-6">
 
 
-                <h4>Back Log Amount</h4>
+           
 
                 <div class="card mb-2">
                     <div class="card-body">
+                    <h4>Back Log Amount</h4>
 
                         <?php
 
@@ -56,9 +59,9 @@
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}"> {{-- employ this in place of csrf_field only in laravel 5.0 --}}
 
                                     <p>
-                                        <button class="btn btn-success btn-lg btn-block" type="submit" value="Pay Now!">
+                                        <!-- <button class="btn btn-success btn-lg btn-block" type="submit" value="Pay Now!">
                                             <i class="fa fa-plus-circle fa-lg"></i> Pay Backlog
-                                        </button>
+                                        </button> -->
                                     </p>
                                 </div>
                             </div>
@@ -148,11 +151,11 @@
                             
                             <div class="form-group">
                                 <label for="">Custom Name</label>
-                                <input type="text" name="custom_name" value="{{Carbon\Carbon::now()->format('M')}}-{{rand(33223,99999)}}" class="form-control">
+                                <input type="text" name="custom_name" value="{{$plan_name}}-{{Carbon\Carbon::now()->format('M')}}-{{rand(33223,99999)}}" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="">Start Date</label>
-                                <input onchange="backlogValue(this.id)" name="start_date" id="dateTimeFlatpickr" value="{{Carbon\Carbon::now()->format('Y')}}-{{Carbon\Carbon::now()->format('m')}}-{{Carbon\Carbon::now()->format('d')}}" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date..">
+                                <input onchange="backlogValue(this.id)" name="start_date" id="dateTimeFlatpickr" value="{{Carbon\Carbon::now()->format('Y')}}-{{Carbon\Carbon::now()->format('m')}}-{{Carbon\Carbon::now()->format('d')}} {{Carbon\Carbon::now()->format('H:i')}}" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date..">
                             </div>
 
                             <script>
@@ -213,6 +216,8 @@
 
                                         document.getElementById('backlog_pay_amount').value = numeral(monthDifference * 155000).format('00000');
 
+                                        document.getElementById('backlog_amount_id').value = numeral(monthDifference * 155000).format('00000');
+
                                         // console.log(moment().format('Y-M-D h:mm'));
 
                                         // console.log(current_year);
@@ -224,17 +229,19 @@
 
                             <div class="form-group">
                                 <label for="">Deduction Amount</label>
-                                <input type="hidden" name="deduction_amount" value="1550">
-                                <input  value="NGN {{number_format('1550', 2)}}" class="form-control flatpickr flatpickr-input active" type="text" >
+                                <input type="hidden" name="deduction_amount" value="{{$deduction_amount}}">
+                                <input id="backlog_ammount_id" type="hidden" name="backlog_ammount" >
+                                <input  value="NGN {{number_format($deduction_amount, 2)}}" class="form-control flatpickr flatpickr-input active" type="text" >
                             </div>
 
                             <div class="form-group">
                                 <label for="">Frequency</label>
-                                <select class="form-control" name="frequency" value="Monthly" id="">
+                                <select onchange="AmountCalculate(this.id)" class="form-control" name="frequency" value="" id="frequency_id">
                                 <option value="Monthly">Monthly</option>
-                                    <option value="Daily">Daily</option>
                                     <option value="Weekly">Weekly</option>
-                                    <option value="Biweekly">Biweekly</option>
+                                    <option value="Daily">Daily</option>
+                                    <option value="Hourly">Hourly</option>
+                                   
                                     
                                 </select>
                             </div>

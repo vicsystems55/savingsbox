@@ -103,10 +103,11 @@
 
 
                                                                 <div class="">
-                                                                    <input type="hidden" id="bank_name_id" name="bank_name">
+                                                                   
                                                                     <div class="col-md-12">
                                                                     <form method="post" action="{{route('user.bank_info')}}">
                                                                     @csrf
+                                                                    <input type="hidden" id="bank_name_id" name="bank_name">
                                                                 <div class="form-group">
                                                                     <label for="country">Bank Name</label>
                                                                     <select  onchange="getCode()" name="bank_code" class="form-control" id="bank_namez">

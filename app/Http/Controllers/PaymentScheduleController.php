@@ -67,10 +67,10 @@ class PaymentScheduleController extends Controller
             'authorization_code' => 'required',
             'custom_name' => 'unique:payment_schedules'
 
-            
-          
-            
+ 
         ]);
+
+            
 
         $profile_data = UserProfile::where('user_id', Auth::user()->id)->first();
 
@@ -84,34 +84,135 @@ class PaymentScheduleController extends Controller
         
         $end_date = new Carbon( Carbon::now()->format('Y') .':11:01 11:53:20');
 
+
+
         $diff_in_months = $end_date->diffInMonths($start_date);
+
+
+        $diff_in_days = $end_date->diffInDays($start_date);
+
+
+        $diff_in_weeks = $end_date->diffInWeeks($start_date);
+
+
+
+        if ($request->frequency == 'Monthly') {
+            # code...
+
+            for ($i=0; $i <= $diff_in_months + 1  ; $i++) { 
+                # code...
+               
+    
+                $payment_schedule = PaymentSchedule::updateOrCreate(
+                    [
+                    'user_id' => Auth::user()->id,
+                    'package_id' => '1',
+                    'profile_id' => $profile_data->id,
+                    'date' => $date,
+                    'custom_name' => $request->custom_name,
+                    'end_date' => $end_date,
+                    'deduction_amount' => $request->deduction_amount,
+                    'frequency' => $request->frequency,
+                    'authorization_code' => $request->authorization_code,
+                    'start_date' => $request->start_date,
+                    
+                ]);
+    
+                $date = $date->addMonths(1);
+    
+            }
+        }
+
+        if ($request->frequency == 'Weekly') {
+            # code...
+
+            for ($i=0; $i <= $diff_in_weeks + 1  ; $i++) { 
+                # code...
+               
+    
+                $payment_schedule = PaymentSchedule::updateOrCreate(
+                    [
+                    'user_id' => Auth::user()->id,
+                    'package_id' => '1',
+                    'profile_id' => $profile_data->id,
+                    'date' => $date,
+                    'custom_name' => $request->custom_name,
+                    'end_date' => $end_date,
+                    'deduction_amount' => '390',
+                    'frequency' => $request->frequency,
+                    'authorization_code' => $request->authorization_code,
+                    'start_date' => $request->start_date,
+                    
+                ]);
+    
+                $date = $date->addWeeks(1);
+    
+            }
+        }
+
+        if ($request->frequency == 'Daily') {
+            # code...
+            for ($i=0; $i <= $diff_in_days + 1  ; $i++) { 
+                # code...
+               
+    
+                $payment_schedule = PaymentSchedule::updateOrCreate(
+                    [
+                    'user_id' => Auth::user()->id,
+                    'package_id' => '1',
+                    'profile_id' => $profile_data->id,
+                    'date' => $date,
+                    'custom_name' => $request->custom_name,
+                    'end_date' => $end_date,
+                    'deduction_amount' => '50',
+                    'frequency' => $request->frequency,
+                    'authorization_code' => $request->authorization_code,
+                    'start_date' => $request->start_date,
+                    
+                ]);
+    
+                $date = $date->addDays(1);
+    
+            }
+        }
+
+     
+
+        if ($request->frequency == 'Hourly') {
+            # code...
+
+            for ($i=0; $i <= 24  ; $i++) { 
+                # code...
+               
+    
+                $payment_schedule = PaymentSchedule::updateOrCreate(
+                    [
+                    'user_id' => Auth::user()->id,
+                    'package_id' => '1',
+                    'profile_id' => $profile_data->id,
+                    'date' => $date,
+                    'custom_name' => $request->custom_name,
+                    'end_date' => $end_date,
+                    'deduction_amount' => '50',
+                    'frequency' => $request->frequency,
+                    'authorization_code' => $request->authorization_code,
+                    'start_date' => $request->start_date,
+                    
+                ]);
+    
+                $date = $date->addHours(1);
+    
+            }
+        }
+
+
+
 
 
 
         // dd($diff_in_months + 1);
 
-        for ($i=0; $i <= $diff_in_months + 1  ; $i++) { 
-            # code...
-           
-
-            $payment_schedule = PaymentSchedule::updateOrCreate(
-                [
-                'user_id' => Auth::user()->id,
-                'package_id' => '1',
-                'profile_id' => $profile_data->id,
-                'date' => $date,
-                'custom_name' => $request->custom_name,
-                'end_date' => $end_date,
-                'deduction_amount' => $request->deduction_amount,
-                'frequency' => $request->frequency,
-                'authorization_code' => $request->authorization_code,
-                'start_date' => $request->start_date,
-                
-            ]);
-
-            $date = $date->addDays(30);
-
-        }
+        
 
 
        

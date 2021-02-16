@@ -108,7 +108,7 @@ class UserPageController extends Controller
 
         $data = [
             'category_name' => 'dashboard',
-            'page_name' => 'analytics',
+            'page_name' => 'Reliance_Packages',
             'has_scrollspy' => 0,
             'scrollspy_offset' => '',
         ];
@@ -122,7 +122,7 @@ class UserPageController extends Controller
 
         $data = [
             'category_name' => 'dashboard',
-            'page_name' => 'analytics',
+            'page_name' => 'Single_Package',
             'has_scrollspy' => 0,
             'scrollspy_offset' => '',
         ];
@@ -130,8 +130,42 @@ class UserPageController extends Controller
         return view('users.single_package')->with($data);
     }
 
-    public function subscription_setup()
+    public function subscription_setup($plan)
     {
+
+        if ($plan == 'plan_a') {
+            # code...
+
+            $plan_name = "PLAN A";
+            $deduction_amount = '1550';
+        }
+
+        if ($plan == 'plan_b') {
+            # code...
+            $plan_name = "PLAN B";
+            $deduction_amount = '3100';
+        }
+
+        if ($plan == 'plan_c') {
+            # code...
+            $plan_name = "PLAN C";
+            $deduction_amount = '6200';
+        }
+
+        if ($plan == 'plan_d') {
+            # code...
+
+            $plan_name = "PLAN D";
+            $deduction_amount = '15500';
+        }
+
+        if ($plan == 'plan_e') {
+            # code...
+            $plan_name = "PLAN E";
+            $deduction_amount = '31000';
+        }
+
+      
 
         $user_cards = UserCard::where('user_id', Auth::user()->id)->latest()->get();
 
@@ -144,7 +178,9 @@ class UserPageController extends Controller
         ];
         // $pageName = 'date_range_picker';
         return view('users.subscription_setup',[
-            'user_cards' => $user_cards
+            'user_cards' => $user_cards,
+            'plan_name' => $plan_name,
+            'deduction_amount' => $deduction_amount
         ])->with($data);
     }
 

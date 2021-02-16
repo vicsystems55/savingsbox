@@ -28,7 +28,7 @@ Route::group(['middleware' => ['auth','user'], 'prefix' => 'user'], function(){
     Route::get('/notifications', 'UserPageController@notifications')->name('user.notifications');
     Route::get('/reliance_packages', 'UserPageController@reliance_packages')->name('user.reliance_packages');
     Route::get('/single_package/{id}', 'UserPageController@single_package')->name('user.single_package');
-    Route::get('/subscription_setup', 'UserPageController@subscription_setup')->name('user.subscription_setup');
+    Route::get('/subscription_setup/{plan}', 'UserPageController@subscription_setup')->name('user.subscription_setup');
     Route::post('/create_payment_schedule', 'PaymentScheduleController@create_payment_schedule')->name('user.create_payment_schedule');
     Route::get('/payment_schedule/{custom_name}', 'PaymentScheduleController@payment_schedule')->name('user.payment_schedule');
     Route::get('/settings', 'UserPageController@settings')->name('user.settings');

@@ -35,7 +35,7 @@
                                     
                             </div>
                             <div class="card-footer">
-                                <a href="{{route('user.subscription_setup', 2)}}" class="btn btn-success shadow">
+                                <a href="{{route('user.subscription_setup', 'plan_a')}}" class="btn btn-success shadow">
                                     Subscribe
                                 </a>
                             </div>
@@ -46,13 +46,22 @@
                     <div style="min-width:330px;" class="col-4 mx-auto">
 
                         <div style="min-height: 230px; min-width:300px" class="shadow card bg-warning mx-auto">
+                            <div class="card-header">
+                                <h6 class="badge badge-primary">NGN 3,100.00/mo</h6>
+                            </div>
                             <div class="card-body">
                                     <h4>PLAN B</h4>
 
+                                    <ul>
+                                        <li>50kg bag of Rice</li>
+                                        <li>Vegetable Oil (2.6ltr)</li>
+                                        <li>1 pack of Knor chicken</li>
+                                    </ul>
+
                                     
                             </div>
                             <div class="card-footer">
-                                <a href="" class="btn btn-success shadow">
+                                <a href="{{route('user.subscription_setup', 'plan_b')}}" class="btn btn-success shadow">
                                     Subscribe
                                 </a>
                             </div>
@@ -63,13 +72,23 @@
                     <div style="min-width:330px;" class="col-4 mx-auto">
 
                         <div style="min-height: 230px; min-width:300px" class="shadow card bg-warning mx-auto">
+                        <div class="card-header">
+                                <h6 class="badge badge-primary">NGN 6,200.00/mo</h6>
+                            </div>
                             <div class="card-body">
                                     <h4>PLAN C</h4>
 
+                                    <ul>
+                                        <li>50kg bag of Rice (2bags)</li>
+                                        <li>NGN 5000 cash</li>
+                                        <li>Vegetable Oil (2.6ltr)</li>
+                                        <li>1 pack of Knor chicken</li>
+                                    </ul>
+
                                     
                             </div>
                             <div class="card-footer">
-                                <a href="" class="btn btn-success shadow">
+                                <a href="{{route('user.subscription_setup', 'plan_c')}}" class="btn btn-success shadow">
                                     Subscribe
                                 </a>
                             </div>
@@ -81,13 +100,50 @@
                     <div style="min-width:330px;" class="col-4 mx-auto">
 
                         <div style="min-height: 230px; min-width:300px" class="shadow card bg-warning mx-auto">
+                        <div class="card-header">
+                                <h6 class="badge badge-primary">NGN 15,500.00/mo</h6>
+                            </div>
                             <div class="card-body">
                                     <h4>PLAN D</h4>
+
+                                    <ul>
+                                        <li>50kg bag of Rice (2bags)</li>
+                                        <li>NGN 5000 cash</li>
+                                        <li>Vegetable Oil (2.6ltr)</li>
+                                        <li>1 pack of Knor chicken</li>
+                                    </ul>
 
                                     
                             </div>
                             <div class="card-footer">
-                                <a href="" class="btn btn-success shadow">
+                                <a href="{{route('user.subscription_setup', 'plan_d')}}" class="btn btn-success shadow">
+                                    Subscribe
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div style="min-width:330px;" class="col-4 mx-auto">
+
+                        <div style="min-height: 230px; min-width:300px" class="shadow card bg-warning mx-auto">
+                        <div class="card-header">
+                                <h6 class="badge badge-primary">NGN 31,000.00/mo</h6>
+                            </div>
+                            <div class="card-body">
+                                    <h4>PLAN E</h4>
+                                    
+                                    <ul>
+                                        <li>50kg bag of Rice (2bags)</li>
+                                        <li>NGN 5000 cash</li>
+                                        <li>Vegetable Oil (2.6ltr)</li>
+                                        <li>1 pack of Knor chicken</li>
+                                    </ul>
+
+                                    
+                            </div>
+                            <div class="card-footer">
+                                <a href="{{route('user.subscription_setup', 'plan_e')}}" class="btn btn-success shadow">
                                     Subscribe
                                 </a>
                             </div>

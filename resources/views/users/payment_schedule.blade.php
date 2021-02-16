@@ -6,10 +6,73 @@
 
         <div class="mt-5">
 
+            <div class="row">
+                <div class="col-md-6">
+
                 <h6 class="text-dark-light">Package Name:</h6>
                 <h1> December Jollification</h1>
                 <h6 class="text-dark-light">Plan Name:</h6> 
                 <h3>{{$my_schedule[0]->custom_name}}</h3>
+                
+                </div>
+
+                <div class="col-md-6">
+
+                        <div style="min-width: 230px;" class="card">
+                            <div class="card-body">
+                                
+                                 <?php
+
+                                    $start_date = new Carbon\Carbon($my_schedule[0]->date);
+
+                                    $end_date = new Carbon\Carbon( Carbon\Carbon::now()->format('Y') .':11:01 11:53:20');
+
+                                    $diff_in_months = $end_date->diffInMonths($start_date);
+
+                                    $months_left = 12 - $diff_in_months;
+
+                                    $back_log = 1550 * $months_left;
+
+                                ?>
+                                <h6 class="text-center">Backlog Amount</h6>
+                                <h3 class="text-center">NGN {{number_format($back_log,2)}}</h3>
+
+                                    <form method="POST" action="{{ route('add_card') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
+                                    <div class="" style="">
+                                    <div class="col-md-8 mx-auto mt-3">
+                                        
+                                        <input type="hidden" name="email" value="{{Auth::user()->email}}"> {{-- required --}}
+                                        <input type="hidden" name="orderID" value="345">
+                                        <input id="backlog_pay_amount" type="hidden" name="amount" value="{{$back_log}}" > {{-- required in kobo --}}
+                                        <input type="hidden" name="quantity" value="1">
+                                        <input type="hidden" name="currency" value="NGN">
+                                        <input type="hidden" name="callback_url" value="{{config('app.url')}}callback_card_add">
+                                        <input type="hidden" name="metadata" value="{{ json_encode($array = [
+
+                                        'user_id' => Auth::user()->id,
+                                        
+                                        ]) }}" > {{-- For other necessary things you want to add to your payload. it is optional though --}}
+                                        <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
+                                        {{ csrf_field() }} {{-- works only when using laravel 5.1, 5.2 --}}
+
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}"> {{-- employ this in place of csrf_field only in laravel 5.0 --}}
+
+                                        <p>
+                                            <button class="btn btn-success btn-lg btn-block" type="submit" value="Pay Backlog!">
+                                                <i class="fa fa-plus-circle fa-lg"></i> Pay Backlog
+                                            </button>
+                                        </p>
+                                    </div>
+                                    </div>
+                                    </form>
+                            </div>
+                        </div>
+                
+                
+                </div>
+            </div>
+
+               
 
                 <div class="">
                     <div class="card">
