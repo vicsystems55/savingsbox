@@ -8,6 +8,10 @@ use App\UserCard;
 
 use App\UserProfile;
 
+use App\UserWallet;
+
+use App\BackLog;
+
 use Carbon\Carbon;
 
 use Auth;
@@ -34,7 +38,9 @@ class PaymentScheduleController extends Controller
     public function payment_schedule($custom_name)
     {
         //
-        $my_schedule = PaymentSchedule::where('custom_name', $custom_name)->get();
+        $my_schedule = PaymentSchedule::with('packages')->where('custom_name', $custom_name)->get();
+
+        $backlog_data = BackLog::where('user_id', Auth::user()->id)->where('custom_name', $custom_name)->first();
 
        
 
@@ -46,7 +52,8 @@ class PaymentScheduleController extends Controller
         ];
 
         return view('users.payment_schedule', [
-            'my_schedule' => $my_schedule
+            'my_schedule' => $my_schedule,
+            'backlog_data' => $backlog_data
         ])->with($data);
 
 
@@ -70,7 +77,7 @@ class PaymentScheduleController extends Controller
  
         ]);
 
-            
+
 
         $profile_data = UserProfile::where('user_id', Auth::user()->id)->first();
 

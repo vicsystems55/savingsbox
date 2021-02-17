@@ -59,13 +59,17 @@ Route::group(['middleware' => ['auth','admin'], 'prefix' => 'admin'], function()
 
 });
 
-Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
+Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay')->middleware(['auth']);
 
-Route::post('/add_card', 'UserCardController@add_card')->name('add_card');
+Route::post('/add_card', 'UserCardController@add_card')->name('add_card')->middleware(['auth']);
+
+Route::post('/pay_backlog', 'BackLogController@pay_backlog')->name('pay_backlog')->middleware(['auth']);
+
+Route::get('/callback_pay_backlog', 'BackLogController@callback_pay_backlog')->name('callback_pay_backlog')->middleware(['auth']);
 
 // Route::get('/callback_card_add', 'UserCardController@add_card')->name('add_card');
 
-Route::get('/callback_card_add', 'UserCardController@callback_card_add')->name('callback_add_card');
+Route::get('/callback_card_add', 'UserCardController@callback_card_add')->name('callback_add_card')->middleware(['auth']);
 
 
 

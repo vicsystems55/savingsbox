@@ -24,10 +24,14 @@
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <label for="fullName">Full Name</label>
-                                                                <input type="text" class="form-control mb-4" id="fullName" placeholder="Full Name" value="Jimmy Turner">
+                                                                <input type="text" class="form-control mb-4" id="fullName" placeholder="Full Name" value="{{Auth::user()->name}}">
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                                <label for="fullName">Email</label>
+                                                                <input type="text" class="form-control mb-4" id="fullName" placeholder="Full Name" value="{{Auth::user()->email}}">
+                                                            </div>
                                                             
                                                         </div>
                                                     </div>

@@ -8,6 +8,10 @@ use App\UserProfile;
 
 use App\PaymentSchedule;
 
+use App\Notification;
+
+use App\UserWallet;
+
 use App\UserCard;
 
 use Auth;
@@ -29,6 +33,11 @@ class UserPageController extends Controller
             'has_scrollspy' => 0,
             'scrollspy_offset' => '',
         ];
+            $my_wallet_cr = UserWallet::where('user_id', Auth::user()->id)->where('type','credit')->sum('amount');
+
+            $my_wallet_db = UserWallet::where('user_id', Auth::user()->id)->where('type','debit')->sum('amount');
+
+            $my_wallet_bal = $my_wallet_cr - $my_wallet_db;
 
             $my_subscriptions = PaymentSchedule::with('packages')->where('user_id', Auth::user()->id)->latest()->get()->unique('custom_name');
 
@@ -37,7 +46,8 @@ class UserPageController extends Controller
             // dd($my_subscriptions);
 
         return view('users.dashboard',[
-            'my_subscriptions' => $my_subscriptions
+            'my_subscriptions' => $my_subscriptions,
+            'my_wallet_bal' =>  $my_wallet_bal
         ])->with($data);
     }
 
@@ -90,6 +100,8 @@ class UserPageController extends Controller
     {
         //
 
+        $my_notifications = Notification::where('user_id', Auth::user()->id)->get();
+
         $data = [
             'category_name' => 'components',
             'page_name' => 'list_group',
@@ -98,7 +110,9 @@ class UserPageController extends Controller
 
         ];
 
-        return view('users.notifications')->with($data);
+        return view('users.notifications', [
+            'notifications' => $my_notifications
+        ])->with($data);
     }
 
 

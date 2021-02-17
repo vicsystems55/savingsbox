@@ -15,6 +15,13 @@ class CreateBackLogsTable extends Migration
     {
         Schema::create('back_logs', function (Blueprint $table) {
             $table->id();
+            $table->string('backlog_amount');
+            $table->string('custom_name');
+            $table->string('package_name');
+            $table->bigInteger('user_id')->unsigned();
+            $table->string('status')->default('active');
+
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

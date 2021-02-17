@@ -134,7 +134,7 @@
                         
                         <div class="acc-total-info">
                             <h5>wallet Balance</h5>
-                            <p class="acc-amount">NGN 0.00</p>
+                            <p class="acc-amount">NGN {{number_format($my_wallet_bal,2)}}</p>
                         </div>
 
                        

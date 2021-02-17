@@ -16,40 +16,87 @@
                 
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-6 p-2">
 
-                        <div style="min-width: 230px;" class="card">
+                @if(Session::has('backlog_msg'))
+
+                    <p class="alert alert-success">
+                        {{Session::get('backlog_msg')}}
+                    </p>
+
+
+                @endif
+
+                        @if($backlog_data)
+
+                        <div style="width: 320px;" class="card bg-success">
+                            <div class="card-body">
+
+                            <?php
+
+                                        $start_date = new Carbon\Carbon($my_schedule[0]->date);
+
+                                        $end_date = new Carbon\Carbon( Carbon\Carbon::now()->format('Y') .':11:01 11:53:20');
+
+                                        $diff_in_months = $end_date->diffInMonths($start_date);
+
+                                        $months_left = 12 - $diff_in_months;
+
+                                        $back_log = 1550 * $months_left;
+
+                                    ?>
+                                
+                                  
+                                    <h6 class="text-center">Backlog Amount</h6>
+
+                                     <h3 class="text-center">NGN {{number_format($back_log,2)}}</h3>
+
+                                     <button class="btn btn-dark text-center">CLEARED!!</button>
+
+                                    
+                            </div>
+                        </div>
+                
+
+
+                        @else
+
+                        <div style="width: 320px;" class="card">
                             <div class="card-body">
                                 
-                                 <?php
+                                    <?php
 
-                                    $start_date = new Carbon\Carbon($my_schedule[0]->date);
+                                        $start_date = new Carbon\Carbon($my_schedule[0]->date);
 
-                                    $end_date = new Carbon\Carbon( Carbon\Carbon::now()->format('Y') .':11:01 11:53:20');
+                                        $end_date = new Carbon\Carbon( Carbon\Carbon::now()->format('Y') .':11:01 11:53:20');
 
-                                    $diff_in_months = $end_date->diffInMonths($start_date);
+                                        $diff_in_months = $end_date->diffInMonths($start_date);
 
-                                    $months_left = 12 - $diff_in_months;
+                                        $months_left = 12 - $diff_in_months;
 
-                                    $back_log = 1550 * $months_left;
+                                        $back_log = 1550 * $months_left;
 
-                                ?>
-                                <h6 class="text-center">Backlog Amount</h6>
-                                <h3 class="text-center">NGN {{number_format($back_log,2)}}</h3>
+                                    ?>
+                                    <h6 class="text-center">Backlog Amount</h6>
 
-                                    <form method="POST" action="{{ route('add_card') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
+                                     <h3 class="text-center">NGN {{number_format($back_log,2)}}</h3>
+
+                                    <form method="POST" action="{{ route('pay_backlog') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
                                     <div class="" style="">
                                     <div class="col-md-8 mx-auto mt-3">
                                         
                                         <input type="hidden" name="email" value="{{Auth::user()->email}}"> {{-- required --}}
                                         <input type="hidden" name="orderID" value="345">
-                                        <input id="backlog_pay_amount" type="hidden" name="amount" value="{{$back_log}}" > {{-- required in kobo --}}
+                                        <input id="backlog_pay_amount" type="hidden" name="amount" value="{{$back_log * 100}}" > {{-- required in kobo --}}
                                         <input type="hidden" name="quantity" value="1">
                                         <input type="hidden" name="currency" value="NGN">
-                                        <input type="hidden" name="callback_url" value="{{config('app.url')}}callback_card_add">
+                                        <input type="hidden" name="callback_url" value="{{config('app.url')}}callback_pay_backlog">
                                         <input type="hidden" name="metadata" value="{{ json_encode($array = [
 
                                         'user_id' => Auth::user()->id,
+                                        'package_name' => $my_schedule[0]->packages->package_name,
+                                        'custom_name' => $my_schedule[0]->custom_name,
+                                        'backlog_amount' => $back_log
                                         
                                         ]) }}" > {{-- For other necessary things you want to add to your payload. it is optional though --}}
                                         <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
@@ -65,9 +112,14 @@
                                     </div>
                                     </div>
                                     </form>
+                                </div>
                             </div>
-                        </div>
                 
+
+
+                        @endif
+
+                       
                 
                 </div>
             </div>
