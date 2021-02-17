@@ -24,6 +24,9 @@
 
                                         $my_paid_sum = App\PaymentSchedule::where('custom_name', $sub->custom_name)->sum('deducted_amount');
 
+
+                                        $backlog = App\Backlog::where('user_id', Auth::user()->id)->where('custom_name', $sub->custom_name )->first();
+
                                         $percent = ($my_paid_sum / $my_sub_sum) * 100;
 
                                     ?>
@@ -58,9 +61,15 @@
                                         </div>
                                     </div>
                                 </div>
+                                @if($backlog)
+                                    <h5 class="pt-3 text-success">Backlog Cleared!!</h5>
+                                @else
+                                    <h5 class="pt-3 text-warning">Backlog Pending</h5>
+                                @endif
+                                
                                 <h5 class="pt-3">NGN {{number_format($my_paid_sum, 2)}} / NGN {{number_format($my_sub_sum, 2)}}</h5>
                                 <div class="progress">
-                                    <div class="progress-bar bg-gradient-secondary" role="progressbar" style="width: {{$percent}}%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-gradient-secondary" role="progressbar" style="width: {{$percent + 1}}%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
 
                                 <div class="justity-content-center mt-2 ">
