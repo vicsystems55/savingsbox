@@ -86,6 +86,11 @@
 
                     <h4 class="text-center">You have no current subscriptions</h4>
 
+                    <div class="">
+                    <br>
+                        <a class="btn btn-sm btn-primary shadow text-center" href="{{route('user.reliance_packages')}}"> view packages</a>
+                    </div>
+
                     @endforelse
 
 
@@ -97,7 +102,9 @@
           
 
             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
-                <div class="widget widget-five">
+              @if($next_deduction == 'null')
+
+              <div class="widget widget-five">
                     <div class="widget-content">
 
                         <div class="header">
@@ -123,7 +130,7 @@
 
                         <div class="w-content">
                             <div class="">                                            
-                                <p class="task-left">{{Carbon\Carbon::parse($next_deduction->date)->format('d')}}</p>
+                                <p class="task-left">{{Carbon\Carbon::parse($next_deduction->date??'0000')->format('d')}}</p>
                                 <p class="task-completed"><span>{{Carbon\Carbon::parse($next_deduction->date)->format('M')}}, {{Carbon\Carbon::parse($next_deduction->date)->format('Y')}}</span></p>
                             <p class="task-hight-priority"><span>{{$next_deduction->packages->package_name}}</span> <br> {{$next_deduction->custom_name}}</p>
                                 <div class="">
@@ -133,6 +140,47 @@
                         </div>
                     </div>
                 </div>
+
+              @else
+
+              <div class="widget widget-five">
+                    <div class="widget-content">
+
+                        <div class="header">
+                            <div class="header-body">
+                                <h6>Next Deduction</h6>
+                            
+                            </div>
+                            <div class="task-action">
+                                <div class="dropdown  custom-dropdown">
+                                    <a class="dropdown-toggle" href="#" role="button" id="pendingTask" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="pendingTask">
+                                        <a class="dropdown-item" href="javascript:void(0);">Add</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">View</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">Update</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">Clear All</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-content">
+                            <div class="">                                            
+                                <p class="task-left">0</p>
+                                <p class="task-completed"><span>0, 000</span></p>
+                            <p class="task-hight-priority"><span></span> <br> </p>
+                                <div class="">
+                                    <a href="" class="btn btn-primary shadow btn-sm"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+              @endif
 
             </div>
 

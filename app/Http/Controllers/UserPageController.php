@@ -38,6 +38,8 @@ class UserPageController extends Controller
 
             $next_deduction = PaymentSchedule::with('packages')->where('status', 'active')->where('user_id', Auth::user()->id)->where('date', '>=', Carbon::today())->latest()->first();
 
+           
+
             $user_card = UserCard::where('user_id', Auth::user()->id)->latest()->first();
 
            
