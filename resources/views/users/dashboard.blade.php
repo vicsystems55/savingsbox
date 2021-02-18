@@ -62,9 +62,9 @@
                                     </div>
                                 </div>
                                 @if($backlog)
-                                    <h5 class="pt-3 text-success">Backlog Cleared!!</h5>
+                                    <h6 class="pt-3 text-success">Backlog Cleared!!</h6>
                                 @else
-                                    <h5 class="pt-3 text-warning">Backlog Pending</h5>
+                                    <h6 class="pt-3 text-warning">Backlog Pending</h6>
                                 @endif
                                 
                                 <h5 class="pt-3">NGN {{number_format($my_paid_sum, 2)}} / NGN {{number_format($my_sub_sum, 2)}}</h5>

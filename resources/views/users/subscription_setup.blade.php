@@ -35,7 +35,7 @@
                         $back_log = 1550 * $months_left;
 
                         ?>
-
+<input type="hidden" id="deduct_amnt_id" value="{{$deduction_amount}}">
                         <h1  class="text-center">NGN <span id="backlog_holder"></span> </h1>
 
                         <form method="POST" action="{{ route('add_card') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
@@ -164,6 +164,8 @@
 
                                     console.log('landed');
 
+                                    var deduct_amnt = document.getElementById('deduct_amnt_id').value;
+
                                     var current_year = moment().format('Y');
 
                                     var choosen_date = moment().format('Y-M-D');
@@ -174,7 +176,7 @@
 
                                     var monthDifference =  moment(new Date(choosen_date)).diff(new Date(start_year), 'months', true);
 
-                                    var backlog = numeral(monthDifference * 1550).format('0,0.00');
+                                    var backlog = numeral(monthDifference * deduct_amnt).format('0,0.00');
                                     
                                     console.log(backlog);
 
@@ -186,14 +188,17 @@
 
                                     document.getElementById('backlog_holder').innerHTML= backlog;
 
-                                    document.getElementById('backlog_pay_amount').value = numeral(monthDifference * 155000).format('00000');
+                                    document.getElementById('backlog_pay_amount').value = numeral(monthDifference * deduct_amnt * 100).format('00000');
+
+                                    document.getElementById('backlog_amount_id').value = numeral(monthDifference * deduct_amnt ).format('00000');
 
                                 }
 
 
                                     function backlogValue(start_date) {
 
-                                        
+                                        var deduct_amnt = document.getElementById('deduct_amnt_id').value;
+
                                         var current_year = moment().format('Y');
 
                                         var choosen_date = moment(document.getElementById(start_date).value).format('Y-M-D');
@@ -210,13 +215,13 @@
 
                                         console.log(monthDifference);
 
-                                        var backlog = numeral(monthDifference * 1550).format('0,0.00');
+                                        var backlog = numeral(monthDifference * deduct_amnt).format('0,0.00');
 
                                         document.getElementById('backlog_holder').innerHTML= backlog;
 
-                                        document.getElementById('backlog_pay_amount').value = numeral(monthDifference * 155000).format('00000');
+                                        document.getElementById('backlog_pay_amount').value = numeral(monthDifference * deduct_amnt * 100).format('00000');
 
-                                        document.getElementById('backlog_amount_id').value = numeral(monthDifference * 155000).format('00000');
+                                        document.getElementById('backlog_amount_id').value = numeral(monthDifference * deduct_amnt ).format('00000');
 
                                         // console.log(moment().format('Y-M-D h:mm'));
 
@@ -230,7 +235,7 @@
                             <div class="form-group">
                                 <label for="">Deduction Amount</label>
                                 <input type="hidden" name="deduction_amount" value="{{$deduction_amount}}">
-                                <input id="backlog_ammount_id" type="hidden" name="backlog_ammount" >
+                                <input id="backlog_amount_id" type="hidden" name="backlog_amount" >
                                 <input  value="NGN {{number_format($deduction_amount, 2)}}" class="form-control flatpickr flatpickr-input active" type="text" >
                             </div>
 

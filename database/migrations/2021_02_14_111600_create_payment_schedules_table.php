@@ -26,6 +26,7 @@ class CreatePaymentSchedulesTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->string('deduction_amount');
+            $table->string('backlog_amount')->nullable();
             $table->string('frequency');
             $table->string('authorization_code');
             $table->string('deducted_amount')->default('0');

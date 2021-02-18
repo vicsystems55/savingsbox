@@ -49,9 +49,11 @@
                                   
                                     <h6 class="text-center">Backlog Amount</h6>
 
-                                     <h3 class="text-center">NGN {{number_format($back_log,2)}}</h3>
+                                     <h3 class="text-center">NGN {{number_format($my_schedule[0]->backlog_amount,2)}}</h3>
 
-                                     <button class="btn btn-dark text-center">CLEARED!!</button>
+                                    <div class="c text-center">
+                                    <button class="btn btn-dark text-center">CLEARED!!</button>
+                                    </div>
 
                                     
                             </div>
@@ -79,7 +81,7 @@
                                     ?>
                                     <h6 class="text-center">Backlog Amount</h6>
 
-                                     <h3 class="text-center">NGN {{number_format($back_log,2)}}</h3>
+                                     <h3 class="text-center">NGN {{number_format($my_schedule[0]->backlog_amount,2)}}</h3>
 
                                     <form method="POST" action="{{ route('pay_backlog') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
                                     <div class="" style="">
@@ -87,7 +89,7 @@
                                         
                                         <input type="hidden" name="email" value="{{Auth::user()->email}}"> {{-- required --}}
                                         <input type="hidden" name="orderID" value="345">
-                                        <input id="backlog_pay_amount" type="hidden" name="amount" value="{{$back_log * 100}}" > {{-- required in kobo --}}
+                                        <input id="backlog_pay_amount" type="hidden" name="amount" value="{{$my_schedule[0]->backlog_amount * 100}}" > {{-- required in kobo --}}
                                         <input type="hidden" name="quantity" value="1">
                                         <input type="hidden" name="currency" value="NGN">
                                         <input type="hidden" name="callback_url" value="{{config('app.url')}}callback_pay_backlog">
