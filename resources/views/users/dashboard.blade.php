@@ -91,6 +91,12 @@
                     <h5 class="text-center">You have no current subscriptions</h5>
 
                     <br>
+                        <a class="btn btn-sm btn-warning shadow " href="{{route('user.my_profile')}}"> update profile</a>
+                        <br>
+
+                    
+
+                    <br>
                         <a class="btn btn-sm btn-primary shadow " href="{{route('user.reliance_packages')}}"> view packages</a>
                     </div>
 

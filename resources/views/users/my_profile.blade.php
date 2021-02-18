@@ -64,8 +64,8 @@
                                     <div class="row mb-4 mt-3">
                                         <div class="col-sm-3 col-12">
                                             <div class="nav flex-column nav-pills mb-sm-0 mb-3   text-center mx-auto" id="v-border-pills-tab" role="tablist" aria-orientation="vertical">
-                                              <a class="nav-link active" id="v-border-pills-home-tab" data-toggle="pill" href="#v-border-pills-home" role="tab" aria-controls="v-border-pills-home" aria-selected="true">Personal Info</a>
-                                              <a class="nav-link  text-center" id="v-border-pills-profile-tab" data-toggle="pill" href="#v-border-pills-profile" role="tab" aria-controls="v-border-pills-profile" aria-selected="false">Bank Details</a>
+                                              <a class="nav-link " id="v-border-pills-home-tab" data-toggle="pill" href="#v-border-pills-home" role="tab" aria-controls="v-border-pills-home" aria-selected="true">Personal Info</a>
+                                              <a class="nav-link active  text-center" id="v-border-pills-profile-tab" data-toggle="pill" href="#v-border-pills-profile" role="tab" aria-controls="v-border-pills-profile" aria-selected="false">Bank Details</a>
                                               <a class="nav-link  text-center" id="v-border-pills-messages-tab" data-toggle="pill" href="#v-border-pills-messages" role="tab" aria-controls="v-border-pills-messages" aria-selected="false">NOK Details</a>
                                               <a class="nav-link  text-center" id="v-border-pills-settings-tab" data-toggle="pill" href="#v-border-pills-settings" role="tab" aria-controls="v-border-pills-settings" aria-selected="false">KYC</a>
                                             </div>
@@ -73,14 +73,14 @@
 
                                         <div class="col-sm-9 col-12">
                                             <div class="tab-content" id="v-border-pills-tabContent">
-                                              <div class="tab-pane fade show active" id="v-border-pills-home" role="tabpanel" aria-labelledby="v-border-pills-home-tab">
+                                              <div class="tab-pane fade " id="v-border-pills-home" role="tabpanel" aria-labelledby="v-border-pills-home-tab">
                                                 <h4 class="mb-4">We move your world!</h4>
                                                 <p class="mb-4">
                                                  Under construction... Pleaase proceed to Bank Details                                         
                                                 </p>
                                            
                                               </div>
-                                              <div class="tab-pane fade" id="v-border-pills-profile" role="tabpanel" aria-labelledby="v-border-pills-profile-tab">
+                                              <div class="tab-pane fade show active" id="v-border-pills-profile" role="tabpanel" aria-labelledby="v-border-pills-profile-tab">
 
                                                 <div class="medi">
                                                     <div class="media-bod">
