@@ -20,6 +20,7 @@ class CreateNotificationsTable extends Migration
             $table->string('title');
             $table->string('subject')->nullable();
             $table->string('body');
+            $table->string('status')->default('unread');
 
             $table->foreign('user_id')->references('id')->on('users');
 

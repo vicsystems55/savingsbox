@@ -27,7 +27,9 @@ Route::group(['middleware' => ['auth','user'], 'prefix' => 'user'], function(){
     Route::get('/', 'UserPageController@dashboard')->name('user');
     Route::get('/notifications', 'UserPageController@notifications')->name('user.notifications');
     Route::get('/reliance_packages', 'UserPageController@reliance_packages')->name('user.reliance_packages');
+    Route::get('/summary', 'UserPageController@wallet_summary')->name('user.wallet_summary');
     Route::get('/single_package/{id}', 'UserPageController@single_package')->name('user.single_package');
+    Route::get('/single_package2/{type}', 'UserPageController@subscription_setup2')->name('user.single_package2');
     Route::get('/subscription_setup/{plan}', 'UserPageController@subscription_setup')->name('user.subscription_setup');
     Route::post('/create_payment_schedule', 'PaymentScheduleController@create_payment_schedule')->name('user.create_payment_schedule');
     Route::get('/payment_schedule/{custom_name}', 'PaymentScheduleController@payment_schedule')->name('user.payment_schedule');
@@ -64,6 +66,10 @@ Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay')->middlew
 Route::post('/add_card', 'UserCardController@add_card')->name('add_card')->middleware(['auth']);
 
 Route::post('/pay_backlog', 'BackLogController@pay_backlog')->name('pay_backlog')->middleware(['auth']);
+
+Route::post('/manual_pay', 'ManualPayController@manual_pay')->name('manual_pay')->middleware(['auth']);
+
+Route::get('/callback_manual_pay', 'ManualPayController@callback_manual_pay')->name('callback_manual_pay')->middleware(['auth']);
 
 Route::get('/callback_pay_backlog', 'BackLogController@callback_pay_backlog')->name('callback_pay_backlog')->middleware(['auth']);
 

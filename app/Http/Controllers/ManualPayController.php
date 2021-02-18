@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\ManualPay;
+
+use Illuminate\Http\Request;
+
 use App\BackLog;
 
 use App\UserWallet;
 
 use App\Notification;
 
-use Illuminate\Http\Request;
+use App\PaymentSchedule;
+
+
 
 use Illuminate\Support\Facades\Redirect;
 
@@ -16,7 +22,7 @@ use Paystack;
 
 use Auth;
 
-class BackLogController extends Controller
+class ManualPayController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -44,10 +50,9 @@ class BackLogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function pay_backlog(Request $request)
+    public function manual_pay(Request $request)
     {
         //
-
 
         try{
             return Paystack::getAuthorizationUrl()->redirectNow();
@@ -58,30 +63,25 @@ class BackLogController extends Controller
         }  
     }
 
-    public function callback_pay_backlog()
+    public function callback_manual_pay(Request $request)
     {
-        # code...
-
+        //
 
         $paymentDetails = Paystack::getPaymentData();
 
         // dd($paymentDetails);
 
-
-        $backlog = BackLog::create([
-            'user_id' => $paymentDetails['data']['metadata']['user_id'],
-            'package_name' => $paymentDetails['data']['metadata']['package_name'],
-            'custom_name' => $paymentDetails['data']['metadata']['custom_name'],
-            'backlog_amount' => $paymentDetails['data']['metadata']['backlog_amount'],
-            
+        PaymentSchedule::where('id', $paymentDetails['data']['metadata']['schedule_id'] )->update([
+            'status' => 'processed',
+            'deducted_amount' => $paymentDetails['data']['metadata']['amount']
         ]);
 
 
         $userwallet = UserWallet::create([
             'user_id' => $paymentDetails['data']['metadata']['user_id'],
-            'amount' => $paymentDetails['data']['metadata']['backlog_amount'],
+            'amount' => $paymentDetails['data']['metadata']['amount'],
             'type' => 'credit',
-            'description' => 'Backlog Payment',
+            'description' => 'Manual Payment',
             'custom_name' => $paymentDetails['data']['metadata']['custom_name'],
             'package_name' => $paymentDetails['data']['metadata']['package_name'],
             
@@ -89,26 +89,25 @@ class BackLogController extends Controller
 
        $notifications = Notification::create([
                 'user_id' => $paymentDetails['data']['metadata']['user_id'],
-                'title' => 'December Jollification',
+                'title' => 'Manual Payment',
                 'subject' => 'December Jollification Notification',
-                'body' => 'Backlog for ' .$paymentDetails['data']['metadata']['custom_name'] .' of ' .$paymentDetails['data']['metadata']['backlog_amount'] .' has been paid successfully', 
+                'body' => 'Payment for ' .$paymentDetails['data']['metadata']['custom_name'] .' of ' .$paymentDetails['data']['metadata']['amount'] .' has been paid successfully', 
                
             ]);
 
 
         
         
-        return redirect('/user/payment_schedule/'.$paymentDetails['data']['metadata']['custom_name'])->with('backlog_msg', 'Backlog Payments Cleared!!');
-
+        return redirect('/user/payment_schedule/'.$paymentDetails['data']['metadata']['custom_name'])->with('manual_pay_msg', 'Payments was successful!!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\BackLog  $backLog
+     * @param  \App\ManualPay  $manualPay
      * @return \Illuminate\Http\Response
      */
-    public function show(BackLog $backLog)
+    public function show(ManualPay $manualPay)
     {
         //
     }
@@ -116,10 +115,10 @@ class BackLogController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\BackLog  $backLog
+     * @param  \App\ManualPay  $manualPay
      * @return \Illuminate\Http\Response
      */
-    public function edit(BackLog $backLog)
+    public function edit(ManualPay $manualPay)
     {
         //
     }
@@ -128,10 +127,10 @@ class BackLogController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\BackLog  $backLog
+     * @param  \App\ManualPay  $manualPay
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BackLog $backLog)
+    public function update(Request $request, ManualPay $manualPay)
     {
         //
     }
@@ -139,10 +138,10 @@ class BackLogController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\BackLog  $backLog
+     * @param  \App\ManualPay  $manualPay
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BackLog $backLog)
+    public function destroy(ManualPay $manualPay)
     {
         //
     }

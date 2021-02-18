@@ -35,7 +35,7 @@
                                 
                             </div>
                             <div class="card-footer">
-                                <a href="{{route('user.single_package', 1)}}" class="btn btn-primary shadow">View More</a>
+                                <a href="{{route('user.single_package2', 'steady')}}" class="btn btn-primary shadow">View More</a>
                             </div>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                                 </p>
                             </div>
                             <div class="card-footer">
-                                <a href="{{route('user.single_package', 1)}}" class="btn btn-primary shadow">View More</a>
+                                <a href="{{route('user.single_package2', 'target')}}" class="btn btn-primary shadow">View More</a>
                             </div>
                         </div>
                     </div>

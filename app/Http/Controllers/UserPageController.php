@@ -14,6 +14,8 @@ use App\UserWallet;
 
 use App\UserCard;
 
+use Carbon\Carbon;
+
 use Auth;
 
 class UserPageController extends Controller
@@ -33,9 +35,18 @@ class UserPageController extends Controller
             'has_scrollspy' => 0,
             'scrollspy_offset' => '',
         ];
+
+            $next_deduction = PaymentSchedule::with('packages')->where('user_id', Auth::user()->id)->where('date', '>=', Carbon::today())->latest()->first();
+
+            $user_card = UserCard::where('user_id', Auth::user()->id)->latest()->first();
+
+           
+
             $my_wallet_cr = UserWallet::where('user_id', Auth::user()->id)->where('type','credit')->sum('amount');
 
             $my_wallet_db = UserWallet::where('user_id', Auth::user()->id)->where('type','debit')->sum('amount');
+
+            $my_notifications = Notification::where('user_id', Auth::user()->id)->where('status', 'unread')->latest()->paginate(5);
 
             $my_wallet_bal = $my_wallet_cr - $my_wallet_db;
 
@@ -47,8 +58,34 @@ class UserPageController extends Controller
 
         return view('users.dashboard',[
             'my_subscriptions' => $my_subscriptions,
-            'my_wallet_bal' =>  $my_wallet_bal
+            'my_wallet_bal' =>  $my_wallet_bal,
+            'my_notifications' => $my_notifications,
+            'next_deduction' => $next_deduction
+           
         ])->with($data);
+    }
+
+    public function wallet_summary()
+    {
+        # code...
+
+        $user_wallet_summary = UserWallet::where('user_id', Auth::user()->id)->latest()->get();
+
+        $data = [
+            'category_name' => 'components',
+            'page_name' => 'account',
+            'has_scrollspy' => 1,
+            'scrollspy_offset' => 100,
+
+        ];
+
+
+        return view('users.summary',[
+            'user_wallet_summary' => $user_wallet_summary
+        ])->with($data);
+
+
+
     }
 
     public function my_subscriptions()
@@ -142,6 +179,40 @@ class UserPageController extends Controller
         ];
 
         return view('users.single_package')->with($data);
+    }
+
+
+    public function subscription_setup2($type)
+    {
+
+        // if ($type == 'steady') {
+        //     # code...
+
+        //     $type = "PLAN A";
+        //     $deduction_amount = '1550';
+        // }
+
+        // if ($type == 'target') {
+        //     # code...
+
+        //     $type = "PLAN A";
+        //     $deduction_amount = '1550';
+        // }
+
+        $user_cards = UserCard::where('user_id', Auth::user()->id)->latest()->get();
+
+        $data = [
+            'category_name' => 'forms',
+            'page_name' => 'date_range_picker',
+            'has_scrollspy' => 1,
+            'scrollspy_offset' => 100,
+
+        ];
+        
+        return view('users.subscription_setup2',[
+            'user_cards' => $user_cards,
+            'type' => $type
+        ])->with($data);
     }
 
     public function subscription_setup($plan)

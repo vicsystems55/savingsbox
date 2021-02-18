@@ -23,8 +23,8 @@
                         <div class="card-header">
                             <h6 class="badge badge-primary">NGN 1,550.00/mo</h6>
                         </div>
-                            <div class="card-body">
-                                    <h4>PLAN A</h4>
+                            <div class="card-body text-dark">
+                                    <h4 class="text-dark">PLAN A</h4>
 
                                     <ul>
                                         <li>1/2 Bag of rice</li>
@@ -35,7 +35,7 @@
                                     
                             </div>
                             <div class="card-footer">
-                                <a href="{{route('user.subscription_setup', 'plan_a')}}" class="btn btn-success shadow">
+                                <a href="{{route('user.subscription_setup', 'plan_a')}}" class="btn btn-dark shadow">
                                     Subscribe
                                 </a>
                             </div>
@@ -49,8 +49,8 @@
                             <div class="card-header">
                                 <h6 class="badge badge-primary">NGN 3,100.00/mo</h6>
                             </div>
-                            <div class="card-body">
-                                    <h4>PLAN B</h4>
+                            <div class="card-body text-dark">
+                                    <h4 class="text-dark">PLAN B</h4>
 
                                     <ul>
                                         <li>50kg bag of Rice</li>
@@ -61,7 +61,7 @@
                                     
                             </div>
                             <div class="card-footer">
-                                <a href="{{route('user.subscription_setup', 'plan_b')}}" class="btn btn-success shadow">
+                                <a href="{{route('user.subscription_setup', 'plan_b')}}" class="btn btn-dark shadow">
                                     Subscribe
                                 </a>
                             </div>
@@ -75,8 +75,8 @@
                         <div class="card-header">
                                 <h6 class="badge badge-primary">NGN 6,200.00/mo</h6>
                             </div>
-                            <div class="card-body">
-                                    <h4>PLAN C</h4>
+                            <div class="card-body text-dark">
+                                    <h4 class="text-dark">PLAN C</h4>
 
                                     <ul>
                                         <li>50kg bag of Rice (2bags)</li>
@@ -88,7 +88,7 @@
                                     
                             </div>
                             <div class="card-footer">
-                                <a href="{{route('user.subscription_setup', 'plan_c')}}" class="btn btn-success shadow">
+                                <a href="{{route('user.subscription_setup', 'plan_c')}}" class="btn btn-dark shadow">
                                     Subscribe
                                 </a>
                             </div>
@@ -103,8 +103,8 @@
                         <div class="card-header">
                                 <h6 class="badge badge-primary">NGN 15,500.00/mo</h6>
                             </div>
-                            <div class="card-body">
-                                    <h4>PLAN D</h4>
+                            <div class="card-body text-dark">
+                                    <h4 class="text-dark">PLAN D</h4>
 
                                     <ul>
                                         <li>50kg bag of Rice (2bags)</li>
@@ -116,7 +116,7 @@
                                     
                             </div>
                             <div class="card-footer">
-                                <a href="{{route('user.subscription_setup', 'plan_d')}}" class="btn btn-success shadow">
+                                <a href="{{route('user.subscription_setup', 'plan_d')}}" class="btn btn-dark shadow">
                                     Subscribe
                                 </a>
                             </div>
@@ -130,8 +130,8 @@
                         <div class="card-header">
                                 <h6 class="badge badge-primary">NGN 31,000.00/mo</h6>
                             </div>
-                            <div class="card-body">
-                                    <h4>PLAN E</h4>
+                            <div class="card-body text-dark">
+                                    <h4 class="text-dark">PLAN E</h4>
                                     
                                     <ul>
                                         <li>50kg bag of Rice (2bags)</li>
@@ -143,7 +143,7 @@
                                     
                             </div>
                             <div class="card-footer">
-                                <a href="{{route('user.subscription_setup', 'plan_e')}}" class="btn btn-success shadow">
+                                <a href="{{route('user.subscription_setup', 'plan_e')}}" class="btn btn-dark shadow">
                                     Subscribe
                                 </a>
                             </div>

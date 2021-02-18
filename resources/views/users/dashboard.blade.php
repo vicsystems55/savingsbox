@@ -63,12 +63,14 @@
                                 </div>
                                 @if($backlog)
                                     <h6 class="pt-3 text-success">Backlog Cleared!!</h6>
+                                    <h6 class="">NGN {{number_format($sub->backlog_amount, 2)}} / NGN {{number_format($sub->backlog_amount, 2)}}</h6>
                                 @else
                                     <h6 class="pt-3 text-warning">Backlog Pending</h6>
+                                    <h6 class="">NGN {{number_format(0, 2)}} / NGN {{number_format($sub->backlog_amount, 2)}}</h6>
                                 @endif
                                 
                                 <h5 class="pt-3">NGN {{number_format($my_paid_sum, 2)}} / NGN {{number_format($my_sub_sum, 2)}}</h5>
-                                <div class="progress">
+                                <div class="progress mt-0">
                                     <div class="progress-bar bg-gradient-secondary" role="progressbar" style="width: {{$percent + 1}}%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
 
@@ -101,7 +103,7 @@
                         <div class="header">
                             <div class="header-body">
                                 <h6>Next Deduction</h6>
-                                <p class="meta-date">Nov 2019</p>
+                            
                             </div>
                             <div class="task-action">
                                 <div class="dropdown  custom-dropdown">
@@ -121,9 +123,12 @@
 
                         <div class="w-content">
                             <div class="">                                            
-                                <p class="task-left">8</p>
-                                <p class="task-completed"><span>Feb, 2021</span></p>
-                                <p class="task-hight-priority"><span>DECEMBER JOLLIFICATION</span> feb-23302</p>
+                                <p class="task-left">{{Carbon\Carbon::parse($next_deduction->date)->format('d')}}</p>
+                                <p class="task-completed"><span>{{Carbon\Carbon::parse($next_deduction->date)->format('M')}}, {{Carbon\Carbon::parse($next_deduction->date)->format('Y')}}</span></p>
+                            <p class="task-hight-priority"><span>{{$next_deduction->packages->package_name}}</span> <br> {{$next_deduction->custom_name}}</p>
+                                <div class="">
+                                    <a href="{{route('user.payment_schedule', $next_deduction->custom_name)}}" class="btn btn-primary shadow btn-sm">view details</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -149,7 +154,7 @@
                        
 
                         <div class="inv-action">
-                            <a href="" class="btn btn-dark">Summary</a>
+                            <a href="{{route('user.wallet_summary')}}" class="btn btn-dark">Summary</a>
                             <a href="" class="btn btn-danger">Transfer</a>
                         </div>
                     </div>
@@ -159,20 +164,20 @@
 
            </div>
 
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing ">
                 <div class="widget widget-account-invoice-two">
                     <div class="widget-content">
                         <div class="account-box">
                             <div class="info">
-                                <h5 class="">Pro Plan</h5>
-                                <p class="inv-balance">$10,344</p>
+                                <h5 class="">Active Card</h5>
+                                <p class="inv-balance"></p>
                             </div>
                             <div class="acc-action">
                                 <div class="">
                                     <a href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></a>
                                     <a href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg></a>
                                 </div>
-                                <a href="javascript:void(0);">Upgrade</a>
+                                <a href="javascript:void(0);">More</a>
                             </div>
                         </div>
                     </div>
@@ -284,93 +289,37 @@
 
                         <div class="mt-container mx-auto">
                             <div class="timeline-line">
-                                
+
+                                @forelse($my_notifications as $note)
+
                                 <div class="item-timeline timeline-new">
                                     <div class="t-dot">
                                         <div class="t-primary"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
                                     </div>
                                     <div class="t-content">
                                         <div class="t-uppercontent">
-                                            <h5>Logs</h5>
-                                            <span class="">27 Feb, 2020</span>
+                                            <h5>{{$note->subject}}</h5>
+                                            <span class=""></span>
                                         </div>
-                                        <p><span>Updated</span> Server Logs</p>
+                                        <p><span>Updated</span> {{$note->created_at->diffForHumans()}}</p>
                                         <div class="tags">
-                                            <div class="badge badge-primary">Logs</div>
-                                            <div class="badge badge-success">CPanel</div>
-                                            <div class="badge badge-warning">Update</div>
+                                            <div class="badge badge-secondary">{{$note->status}}</div>
+                                            
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="item-timeline timeline-new">
-                                    <div class="t-dot">
-                                        <div class="t-success"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div>
-                                    </div>
-                                    <div class="t-content">
-                                        <div class="t-uppercontent">
-                                            <h5>Mail</h5>
-                                            <span class="">28 Feb, 2020</span>
-                                        </div>
-                                        <p>Send Mail to <a href="javascript:void(0);">HR</a> and <a href="javascript:void(0);">Admin</a></p>
-                                        <div class="tags">
-                                            <div class="badge badge-primary">Admin</div>
-                                            <div class="badge badge-success">HR</div>
-                                            <div class="badge badge-warning">Mail</div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @empty
 
-                                <div class="item-timeline timeline-new">
-                                    <div class="t-dot">
-                                        <div class="t-danger"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-                                    </div>
-                                    <div class="t-content">
-                                        <div class="t-uppercontent">
-                                            <h5>Task Completed</h5>
-                                            <span class="">01 Mar, 2020</span>
-                                        </div>
-                                        <p>Backup <span>Files EOD</span></p>
-                                        <div class="tags">
-                                            <div class="badge badge-primary">Backup</div>
-                                            <div class="badge badge-success">EOD</div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <h4 class="text-center">No notifications yet...</h4>
 
-                                <div class="item-timeline timeline-new">
-                                    <div class="t-dot">
-                                        <div class="t-warning"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg></div>
-                                    </div>
-                                    <div class="t-content">
-                                        <div class="t-uppercontent">
-                                            <h5>Collect Docs</h5>
-                                            <span class="">10 Mar, 2020</span>
-                                        </div>
-                                        <p>Collected documents from <a href="javascript:void(0);">Sara</a></p>
-                                        <div class="tags">
-                                            <div class="badge badge-success">Collect</div>
-                                            <div class="badge badge-warning">Docs</div>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="item-timeline timeline-new">
-                                    <div class="t-dot">
-                                        <div class="t-dark"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-server"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg></div>
-                                    </div>
-                                    <div class="t-content">
-                                        <div class="t-uppercontent">
-                                            <h5>Reboot</h5>
-                                            <span class="">06 Apr, 2020</span>
-                                        </div>
-                                        <p>Server rebooted successfully</p>
-                                        <div class="tags">
-                                            <div class="badge badge-warning">Reboot</div>
-                                            <div class="badge badge-primary">Server</div>
-                                        </div>
-                                    </div>
-                                </div>                                      
+                                @endforelse
+
+                                
+                               
+
+                                                                    
                             </div>                                    
                         </div>
                     </div>

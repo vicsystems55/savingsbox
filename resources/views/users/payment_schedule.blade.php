@@ -98,7 +98,7 @@
                                         'user_id' => Auth::user()->id,
                                         'package_name' => $my_schedule[0]->packages->package_name,
                                         'custom_name' => $my_schedule[0]->custom_name,
-                                        'backlog_amount' => $back_log
+                                        'backlog_amount' => $my_schedule[0]->backlog_amount
                                         
                                         ]) }}" > {{-- For other necessary things you want to add to your payload. it is optional though --}}
                                         <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
@@ -176,9 +176,21 @@
                                             </a>
 
                                             @else
-                                            <a href="" class="btn btn-primary shadow btn-sm">
+
+                                            @if(Carbon\Carbon::parse($schedule->date)->format('d:M') == Carbon\Carbon::today()->format('d:M') )
+
+                                                @include('users.manual_pay_form')
+
+                                            @else
+
+                                            @endif
+
+
+                                                
+
+                                            <!-- <a href="" class="btn btn-primary shadow btn-sm">
                                                 PAY NOW!!
-                                            </a>
+                                            </a> -->
 
                                             @endif
                                             
