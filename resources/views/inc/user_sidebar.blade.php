@@ -24,9 +24,9 @@
                             <li class="{{ ($page_name === 'sales') ? 'active' : '' }}">
                                 <a href="{{route('user')}}"> Home </a>
                             </li>
-                            <li class="{{ ($page_name === 'analytics') ? 'active' : '' }}">
+                            <!-- <li class="{{ ($page_name === 'analytics') ? 'active' : '' }}">
                                 <a href="/analytics"> Analytics </a>
-                            </li>
+                            </li> -->
                         </ul>
                     </li>
 
