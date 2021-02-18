@@ -96,15 +96,7 @@ Route::group([] , function() {
     });
     
     Route::get('/sales', function() {
-        // $category_name = '';
-        $data = [
-            'category_name' => 'dashboard',
-            'page_name' => 'sales',
-            'has_scrollspy' => 0,
-            'scrollspy_offset' => '',
-        ];
-        // $pageName = 'sales';
-        return view('dashboard')->with($data);
+        return redirect('/login');  
     });
 
 
