@@ -25,7 +25,7 @@
                                         $my_paid_sum = App\PaymentSchedule::where('custom_name', $sub->custom_name)->sum('deducted_amount');
 
 
-                                        $backlog = App\Backlog::where('user_id', Auth::user()->id)->where('custom_name', $sub->custom_name )->first();
+                                        $backlog = App\BackLog::where('user_id', Auth::user()->id)->where('custom_name', $sub->custom_name )->first();
 
                                         $percent = ($my_paid_sum / $my_sub_sum) * 100;
 
