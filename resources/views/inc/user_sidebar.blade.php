@@ -6,7 +6,7 @@
         <nav id="sidebar">
             <div class="shadow-bottom"></div>
 
-            <ul class="list-unstyled menu-categories" id="accordionExample">
+            <ul class="list-unstyled menu-categories pt-5" id="accordionExample">
                 
                 @if ($page_name != 'alt_menu' && $page_name != 'blank_page' && $page_name != 'boxed' && $page_name != 'breadcrumb' )
 
