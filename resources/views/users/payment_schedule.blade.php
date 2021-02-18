@@ -177,13 +177,15 @@
 
                                             @else
 
-                                            @if(Carbon\Carbon::parse($schedule->date)->format('d:M') == Carbon\Carbon::today()->format('d:M') )
+                                            <!-- @if(Carbon\Carbon::parse($schedule->date)->format('d:M') == Carbon\Carbon::today()->format('d:M') )
 
                                                 @include('users.manual_pay_form')
 
                                             @else
 
-                                            @endif
+                                            @endif -->
+
+                                            @include('users.manual_pay_form')
 
 
                                                 
