@@ -5,7 +5,9 @@
     <div class="layout-px-spacing">
 
             <div class="container pt-5">
-            <h3>Current Subscriptions</h3>
+
+            <h1>Hi, {{Auth::user()->name}}</h1>
+            <h3 class="text-center">Current Subscriptions</h3>
                 <div class="row overflow-auto flex-row flex-nowrap  mt-4 pb-4 pt-2">
 
                 
@@ -84,11 +86,12 @@
 
                     @empty
 
-                    <h4 class="text-center">You have no current subscriptions</h4>
+                   
+                    <div class="float-right">
+                    <h5 class="text-center">You have no current subscriptions</h5>
 
-                    <div class="">
                     <br>
-                        <a class="btn btn-sm btn-primary shadow text-center" href="{{route('user.reliance_packages')}}"> view packages</a>
+                        <a class="btn btn-sm btn-primary shadow " href="{{route('user.reliance_packages')}}"> view packages</a>
                     </div>
 
                     @endforelse
